@@ -21,10 +21,9 @@ body {
 }
 
 .flex-container { 
-    display: flex;
-    flex-wrap: nowrap;
     justify-content: space-between;
-    width: 85%;
+    flex-wrap: nowrap;
+    width: 80%;
 }
 
 .flex-container-signup { 
@@ -94,4 +93,42 @@ button {
 .error {
     color: red;
     font-size: 12px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkgreen;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 15px 31.5px;
+    text-decoration: none;
+    border: 1px solid white;
+}
+
+.display_account {
+	border: 1px solid black;
+	width: 100%;
+}
+#account_balance {
+	float:right;
+}
+
+.credit_card_line {
+	border: 1px solid black;
+	width: 100%;
+}
+
+#credit_balance {
+	float:right;
 }

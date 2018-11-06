@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
-        <title>Home Page</title>
+        <title>Transaction history</title>
         <meta name="description" content="Comp 353 Project">
         <link rel="stylesheet" href="main_stylesheet.css">
     </head>
@@ -17,12 +16,12 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello </p>
+					<p class="subtitle">Transaction history</p>
 					    <ul> 
+						   <li><a href="../home_page/home_page.php">Home page</a></li>
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
-						   <li><a href="../transfer_money/transfer_money.php"">Transfer between account</a></li>
+						   <li><a href="../transfer_money/transfer_money.php">Transfer between account</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
-						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
 
 					<br>

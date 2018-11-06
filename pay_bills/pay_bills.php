@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
     
     <head>
         <meta charset="utf-8">
-        <title>Home Page</title>
+        <title>Pay bills</title>
         <meta name="description" content="Comp 353 Project">
         <link rel="stylesheet" href="main_stylesheet.css">
     </head>
@@ -17,19 +16,24 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello </p>
+					<p class="subtitle">Paying bills</p>
 					    <ul> 
+						   <li><a href="../home_page/home_page.php">Home page</a></li>
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
-						   <li><a href="../transfer_money/transfer_money.php"">Transfer between account</a></li>
-						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
+						   <li><a href="../transfer_money/transfer_money.php">Transfer between account</a></li>
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
 
 					<br>
 
-					<table class="display_account"> Account
+					Account
+					<select>
+						<option value="40023289">40023289</option>
+						<option value="5004789">5004789</option>
+					</select>
+
+					<table class="display_account"> Amount
 						<tr class="account_info">
-							<td id="account_number">40023289</td>
 							<td id="account_balance">CDN 9999</td>
 						</tr>
 
@@ -37,10 +41,12 @@
 						</tr>
 					</table>
 
-					<table class="credit_card_line">Credit Card
+					<br>
+					
+					<table class="credit_card_line">Bills
 						<tr class="credit_info">
-							<td id="credit_number">5004789</td>
-							<td id="credit_balance">-150</td>
+							<td id="credit_number">Electric</td>
+							<td id="credit_balance">150</td>
 						</tr>
 					</table>
 
