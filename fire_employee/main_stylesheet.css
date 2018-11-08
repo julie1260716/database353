@@ -111,24 +111,16 @@ li a {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 15px 31.5px;
+    padding: 15px 27.5px;
     text-decoration: none;
     border: 1px solid white;
 }
 
-.display_account {
-	border: 1px solid black;
-	width: 100%;
-}
-#account_balance {
-	float:right;
-}
-
-.credit_card_line {
-	border: 1px solid black;
+.display_employee_info{
 	width: 100%;
 }
 
-#credit_balance {
-	float:right;
+table, tr, td {
+	border: 1px solid black;
+	border-collapse: collapse;
 }

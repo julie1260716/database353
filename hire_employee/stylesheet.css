@@ -11,9 +11,8 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0 auto;
-    max-width: 900px;
-    padding: 2em 2em 4em; 
-    height: 40em;
+    max-width: 800px;
+    padding: 2em 2em 4em;
 }
 
 #container {
@@ -21,9 +20,10 @@ body {
 }
 
 .flex-container { 
-    justify-content: space-between;
+    display: flex;
     flex-wrap: nowrap;
-    width: 80%;
+    justify-content: space-between;
+    width: 85%;
 }
 
 .flex-container-signup { 
@@ -34,16 +34,16 @@ body {
 }
 
 h1 {
-    color:  #004080;
-    font-weight: 600; 
-    font-size: 3em;
-    margin-top: 0px;
+    color:  #004080;;
+    font-weight: 600;
+    line-height: 1;
+    font-size: 4em;
+    margin-top: 20px;
 }
 
 h2 { 
-    margin-top: -1.5em;
+    margin-top: -1em;
     color: #006600;
-	
 }
  
 label {
@@ -73,6 +73,7 @@ a {
 .subtitle {
     color:  #004080;
     font-weight: 600;
+   
     font-size: 1.4em;
     margin-top: 1em;
     margin-bottom: 0.7em;
@@ -111,16 +112,7 @@ li a {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 15px 27.5px;
+    padding: 15px 31.5px;
     text-decoration: none;
     border: 1px solid white;
-}
-
-.display_employee_info{
-	width: 100%;
-}
-
-table, tr, td {
-	border: 1px solid black;
-	border-collapse: collapse;
 }
