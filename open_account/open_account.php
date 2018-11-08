@@ -4,7 +4,7 @@
     
     <head>
         <meta charset="utf-8">
-        <title>Send money</title>
+        <title>Open account</title>
         <meta name="description" content="Comp 353 Project">
         <link rel="stylesheet" href="main_stylesheet.css">
     </head>
@@ -17,9 +17,9 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Sending money</p>
+					<p class="subtitle">Please enter information below</p>
 					    <ul> 
-						   <li><a href="../home_page/home_page.php">Home page</a></li>
+						   <li><a href="../send_money/send_money.php">Send money</a></li>
 						   <li><a href="../transfer_money/transfer_money.php"">Transfer between account</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
@@ -27,22 +27,31 @@
 
 					<br>
 
-					Account
-					<select>
-						<option value="40023289">40023289</option>
-						<option value="5004789">5004789</option>
-					</select>
+					<br>
+					<button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
+					<br>
+					<br>
+
+					<table>
+						<tr>
+							<td>ID</td>
+							<td>Type</td>
+							<td>Service</td>
+							<td>Annual Fee</td>
+						</tr>
+						
+						<tr>
+							<td>01</td>
+							<td>Regular</td>
+							<td>Investment</td>
+							<td>100</td>
+						</tr>
+						
+					</table>
 
 					<br>
 
-					Amount: <input type="text" name="amount">
-					
-					<br>
-					
-					Receiver email: <input type="text" name="receiver">
-
-					<br>
-					<button type="submit" style="font-size: 16px">Confirm</button>
+					Account type ID you choose: <input type="text" name="id"> <button formaction="../home_page/home_page.php">Submit</button>
 				</div>
 		   </div><!--end of flex-container-->
     </form> 

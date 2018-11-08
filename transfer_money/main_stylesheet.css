@@ -111,7 +111,7 @@ li a {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 15px 31.5px;
+    padding: 15px 42.5px;
     text-decoration: none;
     border: 1px solid white;
 }
@@ -121,14 +121,5 @@ li a {
 	width: 100%;
 }
 #account_balance {
-	float:right;
-}
-
-.credit_card_line {
-	border: 1px solid black;
-	width: 100%;
-}
-
-#credit_balance {
 	float:right;
 }

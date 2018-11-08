@@ -32,21 +32,20 @@
 						<option value="5004789">5004789</option>
 					</select>
 
+					<br>
+					
 					<table class="display_account"> Amount
 						<tr class="account_info">
 							<td id="account_balance">CDN 9999</td>
 						</tr>
-
-						<tr>
-						</tr>
 					</table>
 
 					<br>
-					
-					<table class="credit_card_line">Bills
-						<tr class="credit_info">
-							<td id="credit_number">Electric</td>
-							<td id="credit_balance">150</td>
+
+					<table class="display_bills">Bills
+						<tr class="bills_info">
+							<td id="bill_name">Electric</td>
+							<td id="bill_amount">150</td>
 						</tr>
 					</table>
 

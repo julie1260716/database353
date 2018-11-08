@@ -124,11 +124,11 @@ li a {
 	float:right;
 }
 
-.credit_card_line {
+.display_bills{
 	border: 1px solid black;
 	width: 100%;
 }
 
-#credit_balance {
+#bill_amount{
 	float:right;
 }

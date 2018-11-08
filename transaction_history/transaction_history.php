@@ -26,20 +26,23 @@
 
 					<br>
 
-					<table class="display_account"> Account
-						<tr class="account_info">
-							<td id="account_number">40023289</td>
-							<td id="account_balance">CDN 9999</td>
+					Account
+					<select>
+						<option value="40023289">40023289</option>
+						<option value="5004789">5004789</option>
+					</select>
+
+					<table class="display_history"> Account
+						<tr class="history_info">
+							<td id="date">DATE</td>
+							<td id="spent">PAID FOR</td>
+							<td id="amount">AMOUNT</td>
 						</tr>
 
-						<tr>
-						</tr>
-					</table>
-
-					<table class="credit_card_line">Credit Card
-						<tr class="credit_info">
-							<td id="credit_number">5004789</td>
-							<td id="credit_balance">-150</td>
+						<tr class="details">
+							<td id="date1">30/10/2018</td>
+							<td id="spent1">Starbucks</td>
+							<td id="amount1">5.9</td>
 						</tr>
 					</table>
 

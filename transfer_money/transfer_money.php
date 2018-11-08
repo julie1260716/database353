@@ -39,12 +39,13 @@
 						</tr>
 
 						<tr>
+							Amount: <input type="text" name="amount"> from
 						</tr>
 					</table>
 
 					<br> 
 					
-					<table class="credit_card_line">To account
+					<table class="display_account">To account
 						<select>
 							<option value="40023289">40023289</option>
 							<option value="5004789">5004789</option>
@@ -52,8 +53,8 @@
 
 						<br>
 
-						<tr class="credit_info">
-							<td id="credit_number">5004789</td>
+						<tr class="account_info">
+							<td id="account_balance">5004789</td>
 						</tr>
 					</table>
 
