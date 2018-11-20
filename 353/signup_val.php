@@ -63,7 +63,7 @@ function test_input($data) {
 
 function doCookies() {
     //set variables for the cookies (set for 24 hours)
-    setcookie("cli_num", 12345678912345, time() + (86400 * 1), "/");
+    setcookie("cli_num", 123456789, time() + (86400 * 1), "/");
     setcookie("cli_fname", $_POST['first_name'], time() + (86400 * 1), "/");
     setcookie("cli_lname", $_POST['last_name'], time() + (86400 * 1), "/");
     setcookie("cli_dob", $_POST['dob'], time() + (86400 * 1), "/");
