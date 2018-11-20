@@ -25,6 +25,12 @@
 						 </ul>
 
 					<br>
+					<button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
+					<form method="" action="../employee_home_page/employee_home_page.php">
+		              <button type="submit" style="font-size: 16px">Log out</button>
+		            </form>
+					<br>
+					<br>
 
 					<table class="display_account"> From account
 						<select>

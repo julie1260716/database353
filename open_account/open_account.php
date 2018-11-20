@@ -20,7 +20,7 @@
 					<p class="subtitle">Please enter information below</p>
 					    <ul> 
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
-						   <li><a href="../transfer_money/transfer_money.php"">Transfer between account</a></li>
+						   <li><a href="../transfer_money/transfer_money.php"">Transfer moneyt</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
@@ -29,6 +29,9 @@
 
 					<br>
 					<button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
+					<form method="" action="../employee_home_page/employee_home_page.php">
+		              <button type="submit" style="font-size: 16px">Log out</button>
+		            </form>
 					<br>
 					<br>
 

@@ -49,7 +49,13 @@
        <h1>BANK.</h1>
         <h2>Sign Up for Online Banking</h2>
           <p class="subtitle">Enter your information below</p>
-            <div class="flex-container-signup">          
+          
+          <form method="" action="../employee_home_page/employee_home_page.php">
+            <button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
+            <button type="submit" style="font-size: 16px">Log out</button>
+          </form>
+
+            <div class="flex-container-signup"> 
                 <div>
                     <form method="post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <label>First Name</label><br>  
