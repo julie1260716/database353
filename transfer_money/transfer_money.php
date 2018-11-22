@@ -34,7 +34,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form class="add_customer_form" action="transfer_action.php?cookie_name=<?php echo $cookie_name ?>" method="post">
+        <form class="add_customer_form" action="transfer_action.php?cookie_account=<?php echo $cookie_account ?>" method="post">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -59,7 +59,7 @@
 					<?php
 							$list_acc = unserialize($_COOKIE[$acc_list]);
 					?> 
-					<select>
+					<select name = "Sender">
 						<?php foreach($list_acc as $key => $value) { ?>
 							<option value="<?php echo $key ?>"><?php echo $key ?></option>
 						<?php }?>
@@ -82,7 +82,7 @@
 									$list_acc = unserialize($_COOKIE[$acc_list]);
 								?> 
 
-							<select>
+							<select name = "Receiver">
 								<?php foreach($list_acc as $key => $value) { ?>
 									<option value="<?php echo $key ?>"><?php echo $key ?></option>
 								<?php }?>
