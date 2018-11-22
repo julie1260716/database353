@@ -1,4 +1,20 @@
+<?php
+	if(isset($_COOKIE["cli_num"]))
+    	$id = $_COOKIE["cli_num"];
+    if(isset($_COOKIE["cli_fname"]))
+    	$fname = $_COOKIE["cli_fname"];
+    if(isset($_COOKIE["cli_lname"]))
+        $lname = $_COOKIE["cli_lname"];
+    if(isset($_COOKIE["cli_dob"]))
+        $dob = $_COOKIE["cli_dob"];
+    if(isset($_COOKIE["cli_email"]))
+            $phone = $_COOKIE["cli_email"];
+    if(isset($_COOKIE["cli_phone"]))
+        $email = $_COOKIE["cli_phone"];
+	if(isset($_COOKIE["cli_add"]))
+	    $add = $_COOKIE["cli_add"];  
 
+?>
 <!DOCTYPE html>
 <html>
     
@@ -18,7 +34,7 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello </p>
+					<p class="subtitle">Hello <?php echo $fname ?></p>
 					    <ul> 
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
 						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
