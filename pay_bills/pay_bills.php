@@ -1,3 +1,21 @@
+<?php
+	if(count($_COOKIE) > 0) {
+	    setcookie("user", "", time() - 3600);
+	    setcookie("accounts", "", time() - 3600);
+	}
+
+	$cookie_name = "user";
+	$cookie_value = "John Doe";
+	$cookie_account = array(40023289,50023289,997789);
+	$acc_list = "accounts";
+	$bills = array("Electricity", "Rent");
+	$bill_list = "bills";
+
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	setcookie($acc_list, serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
+	setcookie($bill_list, serialize($bills), time() + (86400 *30), "/");
+?>
+
 <!DOCTYPE html>
 <html>
     
@@ -32,28 +50,28 @@
 					<br>
 					<br>
 
-					Account
+					<label> Account </label>
+					<?php
+							$list_acc = unserialize($_COOKIE[$acc_list]);
+					?> 
 					<select>
-						<option value="40023289">40023289</option>
-						<option value="5004789">5004789</option>
+						<?php foreach($list_acc as $key => $value) { ?>
+							<option value="<?php echo $key ?>"><?php echo $value ?></option>
+						<?php }?>
 					</select>
 
 					<br>
-					
-					<table class="display_account"> Amount
-						<tr class="account_info">
-							<td id="account_balance">CDN 9999</td>
-						</tr>
-					</table>
 
-					<br>
+					<label> Bills </label>
+					<?php
+							$list_bill = unserialize($_COOKIE[$bill_list]);
+					?>
 
-					<table class="display_bills">Bills
-						<tr class="bills_info">
-							<td id="bill_name">Electric</td>
-							<td id="bill_amount">150</td>
-						</tr>
-					</table>
+					<select> 
+						<?php foreach($list_bill as $key => $value) { ?>
+							<option value="<?php echo $key ?>"><?php echo $value ?></option>
+						<?php }?>
+					</select>
 
 					<br>
 					<button type="submit" style="font-size: 16px">Apply for new credit</button>
