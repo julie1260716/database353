@@ -4,12 +4,14 @@
     
     <head>
         <meta charset="utf-8">
-        <title>Fire Employee</title>
+        <title>Fire Staff</title>
         <meta name="description" content="Comp 353 Project">
         <link rel="stylesheet" href="main_stylesheet.css">
     </head>
     <body>
       <div id="container">
+        <a href="../signup_login/login.php"><button type="submit" style="font-size: 16px; float:right; margin-right:20px;">Log out</button></a>
+          <a href="../employee_home_page/employee_home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
@@ -17,19 +19,14 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello </p>
+					<p class="subtitle">Terminate Employee </p>
 					    <ul> 
 						   <li><a href="../employee_home_page/employee_home_page.php">Home employee</a></li>
 						   <li><a href="../hire_employee/hire_employee.php">Hire employee</a></li>
-						   <li><a href="../close_client_account/close_client_account.php"">Close client account</a></li>
+						   <li><a href="../close_client_account/close_client_account.php">Close client account</a></li>
 						   <li><a href="../terminate_client/terminate_client.php">Terminate Client</a></li>
 						 </ul>
-
-					<br> 
-		            <button type="submit" style="font-size: 16px" formaction="../employee_home_page/employee_home_page.php">Log out</button>
-                	<br>
-                	<br>
-
+                    <br><br>
 					Input employee ID to search for: <input type="text" name="employee_id"> <input type="button" value="Search">
 					<br>
 					<br>

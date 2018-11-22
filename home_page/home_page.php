@@ -10,6 +10,7 @@
     </head>
     <body>
       <div id="container">
+        <a href="../signup_login/login.php"><button type="submit" style="font-size: 16px; float:right; margin-right:20px;">Log out</button></a>
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
@@ -20,13 +21,12 @@
 					<p class="subtitle">Hello </p>
 					    <ul> 
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
-						   <li><a href="../transfer_money/transfer_money.php"">Transfer money</a></li>
+						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
 
 					<br> 
-			        <button type="submit" formaction="../employee_home_page/employee_home_page.php" style="font-size: 16px">Log out</button>
 		            <br>
 					<br>
 

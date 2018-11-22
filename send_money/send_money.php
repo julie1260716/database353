@@ -3,7 +3,6 @@
 	    setcookie("user", "", time() - 3600);
 	    setcookie("accounts", "", time() - 3600);
 	}
-
 	$cookie_name = "user";
 	$cookie_value = "John Doe";
 	$cookie_account = array(40023289,50023289,997789);
@@ -11,7 +10,6 @@
 	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 	setcookie($acc_list, serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
-
 <!DOCTYPE html>
 <html>
     
@@ -23,6 +21,8 @@
     </head>
     <body>
       <div id="container">
+        <a href="../signup_login/login.php"><button type="submit" style="font-size: 16px; float:right; margin-right:20px;">Log out</button></a>
+        <a href="../home_page/home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
@@ -33,19 +33,11 @@
 					<p class="subtitle">Sending money</p>
 					    <ul> 
 						   <li><a href="../home_page/home_page.php">Home page</a></li>
-						   <li><a href="../transfer_money/transfer_money.php"">Transfer money</a></li>
+						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
-
 					<br>
-					<button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
-					<form method="" action="../employee_home_page/employee_home_page.php">
-		              <button type="submit" style="font-size: 16px">Log out</button>
-		            </form>
-					<br>
-					<br>
-
 					<label> Account </label>
 					<?php
 							$list_acc = unserialize($_COOKIE[$acc_list]);
@@ -55,7 +47,6 @@
 							<option value="<?php echo $key ?>"><?php echo $value ?></option>
 						<?php }?>
 					</select>
-
 					<br>
 
 			        <div class="flex-container">
