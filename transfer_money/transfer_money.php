@@ -12,7 +12,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form class="add_customer_form" action="../signup/signup.php"> <!--action="send_funds_action.php?cust_id=<?php echo $id ?>" method="post">-->
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -32,37 +32,28 @@
 					<br>
 					<br>
 
-					<table class="display_account"> From account
-						<select>
-							<option value="40023289">40023289</option>
-							<option value="5004789">5004789</option>
-						</select>
+					<label> From account <?php echo $row0["account_no"] ?> </label>
+					<select>
+						<option value="40023289">40023289</option>
+						<option value="5004789">5004789</option>
+					</select>
 
-						<br>
+					<br>
 
-						<tr class="account_info">
-							<td id="account_balance">CDN 9999</td>
-						</tr>
-
-						<tr>
-							Amount: <input type="text" name="amount"> from
-						</tr>
-					</table>
+			        <div class="flex-container">
+			            <div class=container>
+			                <label>Enter Amount:</label>
+			                <input name="amt" min="0" max="1000" type="number" required />
+			            </div>
+			        </div>
 
 					<br> 
 					
-					<table class="display_account">To account
-						<select>
-							<option value="40023289">40023289</option>
-							<option value="5004789">5004789</option>
-						</select>
-
-						<br>
-
-						<tr class="account_info">
-							<td id="account_balance">5004789</td>
-						</tr>
-					</table>
+					<div class="flex-container">
+			            <div class=container>
+			                <label>To Account No : <label id="info_label"><input name="act_to" maxlength="9" type="text" required /></label></label>
+			            </div>
+			        </div>
 
 					<br>
 					<button type="submit" style="font-size: 16px">Confirm</button>

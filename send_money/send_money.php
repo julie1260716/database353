@@ -13,7 +13,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form action="../signup/signup.php"> <!--action="send_funds_action.php?cust_id=<?php echo $id ?>" method="post">-->
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -33,7 +33,8 @@
 					<br>
 					<br>
 
-					Account
+					<label> Account </label>
+					<?php echo $row0["account_no"] ?>
 					<select>
 						<option value="40023289">40023289</option>
 						<option value="5004789">5004789</option>
@@ -41,14 +42,29 @@
 
 					<br>
 
-					Amount: <input type="text" name="amount">
-					
-					<br>
-					
-					Receiver email: <input type="text" name="receiver">
+			        <div class="flex-container">
+			            <div class=container>
+			                <label>To Account No : <label id="info_label"><input name="act_to" maxlength="9" type="text" required /></label></label>
+			            </div>
+			        </div>
 
-					<br>
-					<button type="submit" style="font-size: 16px">Confirm</button>
+			        <div class="flex-container">
+			            <div class=container>
+			                <label>Enter Amount:</label><br>
+			                <input name="amt" min="0" max="1000" type="number" required />
+			            </div>
+			        </div>
+
+			        <div class="flex-container">
+			            <div  class=container>
+			                <label>Enter your password :</b></label><br>
+			                <input name="password" size="24" type="password" required />
+			            </div>
+			        </div>
+
+			        <br>
+
+			        <button type="submit">Confirm</button>
 				</div>
 		   </div><!--end of flex-container-->
     </form> 
