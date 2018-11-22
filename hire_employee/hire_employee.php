@@ -52,22 +52,18 @@
        }
 ?>    
       <div id="container">
+          <a href="../signup_login/login.php"><button type="submit" style="font-size: 16px; float:right; margin-right:20px;">Log out</button></a>
+          <a href="../employee_home_page/employee_home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>
        <h1>BANK.</h1>
-        <h2>Add mew staff to Online Banking</h2>
+        <h2>Add new staff to Online Banking</h2>     
           <p class="subtitle">Enter information below</p>
             <ul> 
               <li><a href="../employee_home_page/employee_home_page.php">Home employee page</a></li>
               <li><a href="../fire_employee/fire_employee.php">Fire employee</a></li>
-              <li><a href="../close_client_account/close_client_account.php"">Close client account</a></li>
+              <li><a href="../close_client_account/close_client_account.php">Close client account</a></li>
               <li><a href="../terminate_client/terminate_client.php">Terminate Client</a></li>
             </ul>
-
-            <br> 
-            <form method="" action="../employee_home_page/employee_home_page.php">
-              <button type="submit" style="font-size: 16px">Log out</button>
-            </form>
-            <br>
-
+            <br><br>
             <div class="flex-container-signup">  
                 <div>
                     <form method="post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -76,18 +72,18 @@
                                 <!--will output the error here-->
                                     <span class = "error"><?php echo $fname_err; echo"<br>";?></span>
 
-                        <label>Tittle</label><br>
+                        <label>Title</label><br>
                             <input type="text" name="tittle"><br>
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $add_err; echo"<br>";?></span>
 
-                        <label>Date of Birth</label><br>
-                            <input type="date" name="dob"><br>
+                        <label>Date of Birth (dd/mm/yyyy)</label><br>
+                            <input type="text" name="dob"><br>
                                <!--will output the error here-->
                                     <span class = "error"><?php echo $dob_err; echo"<br>";?></span>
 
                         <label>Phone Number</label><br>
-                            <input type="tel" name="phone"><br>
+                            <input type="text" name="phone"><br>
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $phone_err; echo"<br>";?></span>  
 
@@ -105,7 +101,7 @@
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $lname_err; echo"<br>";?></span>
                         <label>Email Address</label><br>
-                            <input type="email" name="email"><br>
+                            <input type="text" name="email"><br>
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $email_err; echo"<br>";?></span>
 								  
@@ -119,7 +115,7 @@
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $add_err; echo"<br>";?></span>
 
-                        <label>Start date</label><br>
+                        <label>Start date (dd/mm/yyyy)</label><br>
                             <input type="text" name="start_date"><br>
                                 <!--will output the error here-->
                                   <span class = "error"><?php echo $add_err; echo"<br>";?></span>

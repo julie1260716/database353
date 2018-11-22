@@ -23,15 +23,16 @@
              <br>
              <label>Password</label><br> 
                 <input type = "password" name = "cli_pass" />
-<!--CLI BUTTON-->                  <button type="submit" name="cli_b">LOGIN</button>
-                <!--will output the error here-->
+<!--CLI BUTTON-->
+                <span class = "error"><input type="submit" name="client_form" value="LOGIN"/></span>
+                  <!--will output the error here-->
                     <span class = "error"><?php  echo"<br>"; echo $cli_pass_err;?></span>
                 
             </form>
         </div>
           
           <div>    
-            <form>
+            <form method="post" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <p class="subtitle">EMPLOYEES</p>  
                   <label>Employee ID Number</label>  
                     <input type = "text" name = "em_id"/>
@@ -40,8 +41,9 @@
              <br>
              <label>Password</label><br> 
                 <input type = "password" name = "em_pass" />
-<!--EM BUTTON-->   <button type="submit" name="em_b">LOGIN</button>
-                <!--will output the error here-->
+<!--EM BUTTON --> 
+                <span class = "button"><input type="submit" name="em_form" value="LOGIN"/></span>
+                  <!--will output the error here-->
                     <span class = "error"><?php echo"<br>"; echo $em_pass_err;?></span>
                 
             

@@ -9,6 +9,8 @@
     </head>
     <body>
       <div id="container">
+         <a href="../signup_login/login.php"><button type="submit" style="font-size: 16px; float:right; margin-right:20px;">Log out</button></a>
+          <a href="../home_page/home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
@@ -23,15 +25,7 @@
 						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						 </ul>
-
 					<br>
-					<button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
-					<form method="" action="../employee_home_page/employee_home_page.php">
-		              <button type="submit" style="font-size: 16px">Log out</button>
-		            </form>
-					<br>
-					<br>
-
 					Account
 					<select>
 						<option value="40023289">40023289</option>

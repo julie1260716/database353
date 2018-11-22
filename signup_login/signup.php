@@ -12,13 +12,7 @@
        <h1>BANK.</h1>
         <h2>Sign Up for Online Banking</h2>
           <p class="subtitle">Enter your information below</p>
-          
-          <form method="" action="../employee_home_page/employee_home_page.php">
-            <button type="submit" style="font-size: 16px" formaction="../home_page/home_page.php">Back to home</button>
-            <button type="submit" style="font-size: 16px">Log out</button>
-          </form>
-
-            <div class="flex-container-signup"> 
+            <div class="flex-container-signup">          
                 <div>
                     <form action="<?= $_SERVER['PHP_SELF'] ?>"  method="post">
                         <label>First Name</label><br>  

@@ -1,18 +1,20 @@
 <?php
-	if (isset($_GET['cookie_name'])) {
-        $cookie_name = $_GET['cookie_name'];
-    }
-
-    echo $_POST['Sender'];
+	$cookie_account = unserialize($_COOKIE['accounts']);
+	$amount = $_POST['amt'];
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
           
-    	$sender = $receiver = "";
+    	$sender = $_POST['Sender'];
+    	$receiver = $_POST['Receiver'];
 
     	foreach ($cookie_account as $key => $value) {
-    		if ($key == $_POST['Sender'])
-    			echo "Hi";
+    		if ($key == $sender)
+    			$value = $value - $amount;
+
+    		if ($key == $receiver)
+    			$value = $value + $amount;
     	}
 
      }
+
 ?>
