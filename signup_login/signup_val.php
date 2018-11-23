@@ -1,15 +1,15 @@
 <?php
         //url variable
-        $url = "http://localhost/353/confirmation.php";
+        $url = "../signup_login/confirmation.php";
 
         //defining the variables and setting to empty values
         //errors
-        $fname_err = $lname_err = $dob_err = $phone_err = $email_err = $add_err = "";
+        $fname_err = $lname_err = $dob_err = $phone_err = $email_err = $add_err = $pass_err= "";
         //variables
-        $fname = $lname = $dob = $phone = $email = $add = "";
+        $fname = $lname = $dob = $phone = $email = $add = $password = "";
         //checks if everything is all validated
         $allClear = 0;
-        $numFields = 6;
+        $numFields = 7;
 
  if($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -41,6 +41,10 @@
           //address
           if(empty($_POST['address'])) $add_err = "* Cannot leave field blank";
           else $allClear++; $add = test_input($_POST['address']);
+          //password
+          if(empty($_POST['password'])) $pass_err = "* Cannot leave field blank";
+          else $allClear++; $password = test_input($_POST['password']);
+     
           
             if($allClear == $numFields)
             {
@@ -70,6 +74,7 @@ function doCookies() {
     setcookie("cli_email", $_POST['email'], time() + (86400 * 1), "/");
     setcookie("cli_phone", $_POST['phone'], time() + (86400 * 1), "/");
     setcookie("cli_add", $_POST['address'], time() + (86400 * 1), "/");
+    setcookie("cli_pass", $_POST['password'], time() + (86400 * 1), "/");
     
    /* //print the cookies
     echo "Value is: " . $_COOKIE["cli_num"];
