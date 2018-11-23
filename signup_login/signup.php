@@ -7,7 +7,7 @@
          <?php include("signup_val.php");?>  
         <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body style="height:40em;">
       <div id="container">
        <h1>BANK.</h1>
         <h2>Sign Up for Online Banking</h2>
@@ -26,9 +26,12 @@
                         <label>Phone Number</label><br>
                             <input type="tel" name="phone"><br>
                                 <!--will output the error here-->
-                                  <span class = "error"><?php echo $phone_err; echo"<br>";?></span>  
-<!--SUBMIT BUTTON IS HERE-->
-                                 <br>
+                                  <span class = "error"><?php echo $phone_err; echo"<br>";?></span> 
+                                 <label>Password</label><br>
+                                    <input type="password" name="password"><br>
+                                <!--will output the error here-->
+                                  <span class = "error"><?php echo $pass_err; echo"<br>";?></span> 
+<!--SUBMIT BUTTON IS HERE-->   
                                 <button type="submit">SUBMIT</button>							  
 							</div> 
 							<div>
@@ -39,8 +42,7 @@
                         <label>Email Address</label><br>
                             <input type="text" name="email"><br>
                                 <!--will output the error here-->
-                                  <span class = "error"><?php echo $email_err; echo"<br>";?></span>
-								  
+                                  <span class = "error"><?php echo $email_err; echo"<br>";?></span>		  
 						<label>Address</label><br>
                             <input type="text" name="address"><br>
                                 <!--will output the error here-->

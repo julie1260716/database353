@@ -8,14 +8,16 @@ if(isset($_COOKIE["cli_num"]))
             $fname = $_COOKIE["cli_fname"];
                 if(isset($_COOKIE["cli_lname"]))
                     $lname = $_COOKIE["cli_lname"];
-                if(isset($_COOKIE["cli_dob"]))
-                    $dob = $_COOKIE["cli_dob"];
-        if(isset($_COOKIE["cli_email"]))
-            $phone = $_COOKIE["cli_email"];
-    if(isset($_COOKIE["cli_phone"]))
-        $email = $_COOKIE["cli_phone"];
-if(isset($_COOKIE["cli_add"]))
-    $add = $_COOKIE["cli_add"];  
+                    if(isset($_COOKIE["cli_dob"]))
+                        $dob = $_COOKIE["cli_dob"];
+            if(isset($_COOKIE["cli_email"]))
+                $phone = $_COOKIE["cli_email"];
+        if(isset($_COOKIE["cli_phone"]))
+            $email = $_COOKIE["cli_phone"];
+    if(isset($_COOKIE["cli_add"]))
+        $add = $_COOKIE["cli_add"];  
+if(isset($_COOKIE["cli_pass"]))
+    $password = $_COOKIE["cli_pass"];  
 ?>    
     <head>
         <meta charset="utf-8">
@@ -23,7 +25,7 @@ if(isset($_COOKIE["cli_add"]))
         <meta name="description" content="Comp 353 Confirmation Page">
         <link rel="stylesheet" href="stylesheet.css">
     </head>
-    <body>
+    <body style="height:37em;">
       <div id="container">
        <h1>BANK.</h1>
         <h2>Thank you for signing up!</h2>     
@@ -38,6 +40,9 @@ if(isset($_COOKIE["cli_add"]))
                         <p><?php echo $dob ?></p>          
                         <label  class="confirm">Phone Number</label>     
                         <p><?php echo $phone ?></p>
+                         <label  class="confirm">Password</label>     
+                        <p><?php echo $password ?></p>
+                        <br> <a href="login.php">GO TO LOGIN PAGE ></a>
                     </form>
                 </div> 
                     <div>
@@ -47,14 +52,12 @@ if(isset($_COOKIE["cli_add"]))
                         <label  class="confirm">Email Address</label>    
                         <p><?php echo $email ?></p>       
                         <label  class="confirm">Address</label>          
-                       <p><?php echo $add ?></p>    
+                       <p><?php echo $add ?></p>              
                     </form>
                     </div>
+                   
             </div><!--end of flex-container-signup--> 
-          
-        <br><br>  
-        <a href="login.php">GO TO LOGIN PAGE ></a>
-                 
+    
      </div><!--end of container div-->
         
     </body>
