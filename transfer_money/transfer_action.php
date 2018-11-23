@@ -2,16 +2,24 @@
 	$cookie_account = unserialize($_COOKIE['accounts']);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+    	$msg = 'Success!';
         $amount = $_POST['amt'];
     	$sender = $_POST['sender'];
     	$receiver = $_POST['receiver'];
 
     	foreach ($cookie_account as $key => $value) {
     		if ($key == $sender)
-    			$value = $value - $amount;
+                if (($value - $amount) >= 0){
+                    $value = $value - $amount;
+                    foreach ($cookie_account as $key1 => $value1) {
+                        if ($key1 == $receiver)
+                            $value1 = $value1 + $amount;
 
-    		if ($key == $receiver)
-    			$value = $value + $amount;
+                        $cookie_account[$key1] = $value1;
+                    }
+                }
+                else
+                    $msg = "Amount is bigger than accounts balance, please try again";
 
     		$cookie_account[$key] = $value;
     	}

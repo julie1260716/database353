@@ -3,22 +3,24 @@
 	$cookie_rec = unserialize($_COOKIE['bills']);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+    	$msg = 'Success!';
     	$sender = $_POST['sender'];
     	$receiver = $_POST['pay_bill'];
     	$amount = 0;
 
-    	foreach ($cookie_rec as $key => $value) {
-    		if ($key == $receiver){
-    			$amount = $value;
-    			$value = 0;
-    		}
-
-    		$cookie_rec[$key] = $value;
-    	}
-
     	foreach ($cookie_account as $key => $value) {
     		if ($key == $sender)
-    			$value = $value - $amount;
+                if (($value - $amount) >= 0){
+                    $value = $value - $amount;
+                    foreach ($acc_rec_list as $key => $value) {
+                        if ($key == $receiver)
+                            $value = $value + $amount;
+
+                        $acc_rec_list[$key] = $value;
+                    }
+                }
+                else
+                    $msg = "Amount is bigger than accounts balance, please try again";
 
     		$cookie_account[$key] = $value;
     	}

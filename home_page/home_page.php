@@ -14,9 +14,7 @@
 	if(isset($_COOKIE["cli_add"]))
 	    $add = $_COOKIE["cli_add"];  
 
-	if(count($_COOKIE) > 0) {
-	    setcookie("user", "", time() - 3600);
-	    setcookie("accounts", "", time() - 3600);
+	if(isset($_COOKIE["accounts"])) {
 	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
 	else {
@@ -26,6 +24,9 @@
 			40023289 => 5000,
 			50023289 => 500,
 			997789 => 1000);
+
+		$id = 123456789;
+		$fname = $cookie_value;
 
 		$acc_list = "accounts";
 		$cookie_acc = serialize($cookie_account);
@@ -48,6 +49,19 @@
 		setcookie($acc_rec_list, $rec_list, time() + (86400 * 30), "/"); // 86400 = 1 day
 	}
 
+	$servername = "127.0.0.1";
+	$username = "root";
+	$password = "";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password);
+
+	// Check connection
+	if ($conn->connect_error) {
+	    die("Connection failed: " . $conn->connect_error);
+	}
+	echo "Connected successfully";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +78,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form>
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -80,20 +94,23 @@
 		            <br>
 					<br>
 
-					<table class="display_account"> Account
-						<tr class="account_info">
-							<td id="account_number">40023289</td>
-							<td id="account_balance">CDN 9999</td>
-						</tr>
+					<label>Account</label>
+					<table class="display_account"> 
+						<?php foreach ($cookie_account as $key => $value) { ?>
 
-						<tr>
-						</tr>
+					        <tr>
+					           <td><?php echo $key ?></td>
+					           <td><?php echo $value ?></td>
+					        </tr>
+
+					       	<?php } ?>
 					</table>
 
-					<table class="credit_card_line">Credit Card
-						<tr class="credit_info">
-							<td id="credit_number">5004789</td>
-							<td id="credit_balance">-150</td>
+					<label>Credit card</label>
+					<table class="credit_card_line">
+						<tr>
+							<td>5004789</td>
+							<td>-150</td>
 						</tr>
 					</table>
 

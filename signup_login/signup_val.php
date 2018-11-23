@@ -1,6 +1,6 @@
 <?php
         //url variable
-        $url = "http://localhost/353/confirmation.php";
+        $url = "http://localhost/comp353_mainproject/signup_login/confirmation.php";
 
         //defining the variables and setting to empty values
         //errors

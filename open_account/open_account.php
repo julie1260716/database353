@@ -1,3 +1,6 @@
+<?php
+	//$account_type_info = array {};
+?>
 
 <!DOCTYPE html>
 <html>
@@ -15,7 +18,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form method ="post" action = "open_account_action.php">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -37,16 +40,72 @@
 						
 						<tr>
 							<td>01</td>
-							<td>Regular</td>
+							<td>Personal</td>
 							<td>Investment</td>
 							<td>100</td>
+						</tr>
+
+						<tr>
+							<td>02</td>
+							<td>Personal</td>
+							<td>Banking</td>
+							<td>100</td>
+						</tr>
+
+						<tr>
+							<td>03</td>
+							<td>Personal</td>
+							<td>Saving</td>
+							<td>100</td>
+						</tr>
+
+						<tr>
+							<td>04</td>
+							<td>Business</td>
+							<td>Investment</td>
+							<td>1000</td>
+						</tr>
+
+						<tr>
+							<td>05</td>
+							<td>Business</td>
+							<td>Banking</td>
+							<td>1000</td>
+						</tr>
+
+						<tr>
+							<td>06</td>
+							<td>Business</td>
+							<td>Saving</td>
+							<td>1000</td>
+						</tr>
+
+						<tr>
+							<td>07</td>
+							<td>Cooperate</td>
+							<td>Investment</td>
+							<td>10000</td>
+						</tr>
+
+						<tr>
+							<td>08</td>
+							<td>Cooperate</td>
+							<td>Banking</td>
+							<td>10000</td>
+						</tr>
+
+						<tr>
+							<td>09</td>
+							<td>Cooperate</td>
+							<td>Saving</td>
+							<td>10000</td>
 						</tr>
 						
 					</table>
 
 					<br>
 
-					Account type ID you choose: <input type="text" name="id"> <button formaction="../home_page/home_page.php">Submit</button>
+					Account type ID you choose(please choose one only): <input type="text" name="new_acc_type_id"> <button type="submit">Submit</button>
 				</div>
 		   </div><!--end of flex-container-->
     </form> 

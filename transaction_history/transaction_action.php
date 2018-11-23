@@ -24,19 +24,19 @@
 function translate_day($day){
 	$value = '';
 
-	if ($day = 2)
+	if ($day == 2)
 		$value = 'Monday';
-	if ($day = 3)
+	if ($day == 3)
 		$value = 'Tuesday';
-	if ($day = 4)
+	if ($day == 4)
 		$value = 'Wednesday';
-	if ($day = 5)
+	if ($day == 5)
 		$value = 'Thrusday';
-	if ($day = 6)
+	if ($day == 6)
 		$value = 'Friday';
-	if ($day = 7)
+	if ($day == 7)
 		$value = 'Saturday';
-	if ($day = 8)
+	if ($day == 8)
 		$value = 'Sunday';
 
 	return $value;
@@ -45,29 +45,29 @@ function translate_day($day){
 function translate_month($num){
 	$value = '';
 
-	if ($num = 1)
+	if ($num == 1)
 		$value = 'January';
-	if ($num = 2)
+	if ($num == 2)
 		$value = 'February';
-	if ($num = 3)
+	if ($num == 3)
 		$value = 'March';
-	if ($num = 4)
+	if ($num == 4)
 		$value = 'April';
-	if ($num = 5)
+	if ($num == 5)
 		$value = 'May';
-	if ($num = 6)
+	if ($num == 6)
 		$value = 'June';
-	if ($num = 7)
+	if ($num == 7)
 		$value = 'July';
-	if ($num = 8)
+	if ($num == 8)
 		$value = 'August';
-	if ($num = 9)
+	if ($num == 9)
 		$value = 'September';
-	if ($num = 10)
+	if ($num == 10)
 		$value = 'October';
-	if ($num = 11)
+	if ($num == 11)
 		$value = 'November';
-	if ($num = 12)
+	if ($num == 12)
 		$value = 'December';
 
 	return $value;

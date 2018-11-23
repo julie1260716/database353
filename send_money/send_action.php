@@ -3,22 +3,26 @@
 	$acc_rec_list = unserialize($_COOKIE['acc_rec_list']);
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $msg = 'Success!';
         $amount = $_POST['amt'];
     	$sender = $_POST['sender'];
     	$receiver = $_POST['send_to'];
 
     	foreach ($cookie_account as $key => $value) {
     		if ($key == $sender)
-    			$value = $value - $amount;
+                if (($value - $amount) >= 0){
+                    $value = $value - $amount;
+                    foreach ($acc_rec_list as $key => $value) {
+                        if ($key == $receiver)
+                            $value = $value + $amount;
+
+                        $acc_rec_list[$key] = $value;
+                    }
+                }
+                else
+                    $msg = "Amount is bigger than accounts balance, please try again";
 
     		$cookie_account[$key] = $value;
-    	}
-
-    	foreach ($acc_rec_list as $key => $value) {
-    		if ($key == $receiver)
-    			$value = $value + $amount;
-
-    		$acc_rec_list[$key] = $value;
     	}
 
     	setcookie('accounts', serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
@@ -40,23 +44,26 @@
 	if(isset($_COOKIE["cli_add"]))
 	    $add = $_COOKIE["cli_add"];  
 
-    $mydate=getdate(date("U"));
-    $transaction_date_array = array(
-        'weekday' => $mydate['wday'],
-        'day' => $mydate['mday'],
-        'month' => $mydate['mon'],
-        'year' => $mydate['year']);
-    $transaction_name = 'transaction';
+    if ($msg == 'Success!') {
+        $mydate=getdate(date("U"));
+        $transaction_date_array = array(
+            'weekday' => $mydate['wday'],
+            'day' => $mydate['mday'],
+            'month' => $mydate['mon'],
+            'year' => $mydate['year']);
+        $transaction_name = 'transaction';
 
-    $transaction_info = array(
-        'type' => 'transfer',
-        'sender' => $sender,
-        'receiver' => $receiver,
-        'amount' => $amount,
-        'date' => $transaction_date_array);
-    $transaction_list = serialize($transaction_info);
+        $transaction_info = array(
+            'type' => 'transfer',
+            'sender' => $sender,
+            'receiver' => $receiver,
+            'amount' => $amount,
+            'date' => $transaction_date_array);
+        $transaction_list = serialize($transaction_info);
 
-    setcookie($transaction_name, $transaction_list, time() + (86400 * 30), "/");
+        setcookie($transaction_name, $transaction_list, time() + (86400 * 30), "/");
+    }
+
 
 ?>
 
@@ -80,6 +87,7 @@
               <br>
                <div class="flex-container">   
                     <form>
+                        <h3 style="color: red;"> <?php echo $msg ?> </h3>
                         <label class="confirm">First Name</label>       
                         <p><?php echo $fname ?></p>         
                         <label  class="confirm">Sender</label>     
