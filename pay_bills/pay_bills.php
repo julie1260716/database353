@@ -2,26 +2,29 @@
 	if(count($_COOKIE) > 0) {
 	    setcookie("user", "", time() - 3600);
 	    setcookie("accounts", "", time() - 3600);
+	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
-	$cookie_name = "user";
-	$cookie_value = "John Doe";
-	$cookie_account = array(
-		40023289 => 5000,
-		50023289 => 500,
-		997789 => 1000);
+	else {
+		$cookie_name = "user";
+		$cookie_value = "John Doe";
+		$cookie_account = array(
+			40023289 => 5000,
+			50023289 => 500,
+			997789 => 1000);
 
-	$acc_list = "accounts";
-	$cookie_acc = serialize($cookie_account);
+		$acc_list = "accounts";
+		$cookie_acc = serialize($cookie_account);
 
-	$bills = array(
-		"Electricity" => 300, 
-		"Rent" => 700);
-	$bill_list = "bills";
-	$cookie_bills = serialize($bills);
+		$bills = array(
+			"Electricity" => 300, 
+			"Rent" => 700);
+		$bill_list = "bills";
+		$cookie_bills = serialize($bills);
 
-	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-	setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
-	setcookie($bill_list, $cookie_bills, time() + (86400 *30), "/");
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie($bill_list, $cookie_bills, time() + (86400 *30), "/");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +55,7 @@
 					<br>
 					<label> Account </label>
 					<?php
-							$list_acc = unserialize($_COOKIE[$acc_list]);
+							$list_acc = $cookie_account;
 					?> 
 					<select name = "sender">
 						<?php foreach($list_acc as $key => $value) { ?>
@@ -64,7 +67,7 @@
 
 					<label> Bills </label>
 					<?php
-							$list_bill = unserialize($_COOKIE[$bill_list]);
+							$list_bill = unserialize($_COOKIE['bills']);
 					?>
 
 					<select name = "pay_bill"> 

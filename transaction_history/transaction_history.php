@@ -1,3 +1,23 @@
+<?php
+	$cookie_account = unserialize($_COOKIE['accounts']);
+	$transaction_history = unserialize($_COOKIE['transaction']);
+
+    if(isset($_COOKIE["cli_num"]))
+    	$id = $_COOKIE["cli_num"];
+    if(isset($_COOKIE["cli_fname"]))
+    	$fname = $_COOKIE["cli_fname"];
+    if(isset($_COOKIE["cli_lname"]))
+        $lname = $_COOKIE["cli_lname"];
+    if(isset($_COOKIE["cli_dob"]))
+        $dob = $_COOKIE["cli_dob"];
+    if(isset($_COOKIE["cli_email"]))
+            $phone = $_COOKIE["cli_email"];
+    if(isset($_COOKIE["cli_phone"]))
+        $email = $_COOKIE["cli_phone"];
+	if(isset($_COOKIE["cli_add"]))
+	    $add = $_COOKIE["cli_add"];  
+?>
+
 <!DOCTYPE html>
 <html>
     
@@ -14,7 +34,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form class="add_customer_form" action="transaction_action.php" method="post">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -26,24 +46,29 @@
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						 </ul>
 					<br>
-					Account
-					<select>
-						<option value="40023289">40023289</option>
-						<option value="5004789">5004789</option>
+
+					<label> Choose account </label>
+					<?php
+							$list_acc = $cookie_account;
+					?> 
+					<select name = "chosen_acc">
+						<?php foreach($list_acc as $key => $value) { ?>
+							<option value="<?php echo $key ?>"><?php echo $key ?></option>
+						<?php }?>
 					</select>
 
-					<table class="display_history"> Account
-						<tr class="history_info">
-							<td id="date">DATE</td>
-							<td id="spent">PAID FOR</td>
-							<td id="amount">AMOUNT</td>
-						</tr>
+					<button type="submit" style="font-size: 16px">Confirm</button>
 
-						<tr class="details">
-							<td id="date1">30/10/2018</td>
-							<td id="spent1">Starbucks</td>
-							<td id="amount1">5.9</td>
-						</tr>
+					<br><br>
+
+					<table>
+						<tr>
+						   <td>Type</td>
+				           <td>Account</td>
+				           <td>Receiver</td>
+				           <td>Amount</td>
+				           <td>Date</td>
+				        </tr>
 					</table>
 
 					<br>

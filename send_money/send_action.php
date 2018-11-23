@@ -40,25 +40,25 @@
 	if(isset($_COOKIE["cli_add"]))
 	    $add = $_COOKIE["cli_add"];  
 
-?>
+    $mydate=getdate(date("U"));
+    $transaction_date_array = array(
+        'weekday' => $mydate['wday'],
+        'day' => $mydate['mday'],
+        'month' => $mydate['mon'],
+        'year' => $mydate['year']);
+    $transaction_name = 'transaction';
 
-<?php
-/*****GETTING COOKIE VALUES*****/
-if(isset($_COOKIE["cli_num"]))
-     $id = $_COOKIE["cli_num"];
-        if(isset($_COOKIE["cli_fname"]))
-            $fname = $_COOKIE["cli_fname"];
-                if(isset($_COOKIE["cli_lname"]))
-                    $lname = $_COOKIE["cli_lname"];
-                if(isset($_COOKIE["cli_dob"]))
-                    $dob = $_COOKIE["cli_dob"];
-        if(isset($_COOKIE["cli_email"]))
-            $phone = $_COOKIE["cli_email"];
-    if(isset($_COOKIE["cli_phone"]))
-        $email = $_COOKIE["cli_phone"];
-if(isset($_COOKIE["cli_add"]))
-    $add = $_COOKIE["cli_add"];  
-?>  
+    $transaction_info = array(
+        'type' => 'transfer',
+        'sender' => $sender,
+        'receiver' => $receiver,
+        'amount' => $amount,
+        'date' => $transaction_date_array);
+    $transaction_list = serialize($transaction_info);
+
+    setcookie($transaction_name, $transaction_list, time() + (86400 * 30), "/");
+
+?>
 
 <!DOCTYPE html>
 <html>

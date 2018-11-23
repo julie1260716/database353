@@ -14,6 +14,40 @@
 	if(isset($_COOKIE["cli_add"]))
 	    $add = $_COOKIE["cli_add"];  
 
+	if(count($_COOKIE) > 0) {
+	    setcookie("user", "", time() - 3600);
+	    setcookie("accounts", "", time() - 3600);
+	    $cookie_account = unserialize($_COOKIE['accounts']);
+	}
+	else {
+		$cookie_name = "user";
+		$cookie_value = "John Doe";
+		$cookie_account = array(
+			40023289 => 5000,
+			50023289 => 500,
+			997789 => 1000);
+
+		$acc_list = "accounts";
+		$cookie_acc = serialize($cookie_account);
+
+		$cookie_receive = array(
+			12345 => 500,
+			778899 => 10000);
+		$acc_rec_list = "acc_rec_list";
+		$rec_list = serialize($cookie_receive);
+
+		$bills = array(
+			"Electricity" => 300, 
+			"Rent" => 700);
+		$bill_list = "bills";
+		$cookie_bills = serialize($bills);
+
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie($bill_list, $cookie_bills, time() + (86400 *30), "/");
+		setcookie($acc_rec_list, $rec_list, time() + (86400 * 30), "/"); // 86400 = 1 day
+	}
+
 ?>
 <!DOCTYPE html>
 <html>

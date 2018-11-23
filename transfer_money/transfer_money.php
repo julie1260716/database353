@@ -2,19 +2,22 @@
 	if(count($_COOKIE) > 0) {
 	    setcookie("user", "", time() - 3600);
 	    setcookie("accounts", "", time() - 3600);
+	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
-	$cookie_name = "user";
-	$cookie_value = "John Doe";
-	$cookie_account = array(
-		40023289 => 5000,
-		50023289 => 500,
-		997789 => 1000);
-	
-	$acc_list = "accounts";
-	$cookie_acc = serialize($cookie_account);
+	else {
+		$cookie_name = "user";
+		$cookie_value = "John Doe";
+		$cookie_account = array(
+			40023289 => 5000,
+			50023289 => 500,
+			997789 => 1000);
 
-	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-	setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
+		$acc_list = "accounts";
+		$cookie_acc = serialize($cookie_account);
+
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,9 +52,9 @@
 					<!--Load all account of users -->
 					<label> From account </label>
 					<?php
-							$list_acc = unserialize($_COOKIE[$acc_list]);
+							$list_acc = $cookie_account ;
 					?> 
-					<select name = "Sender">
+					<select name = "sender">
 						<?php foreach($list_acc as $key => $value) { ?>
 							<option value="<?php echo $key ?>"><?php echo $key ?></option>
 						<?php }?>
@@ -68,9 +71,9 @@
 			            <div class=container>	          
 			                <label>To Account No</label>
 				                <?php
-									$list_acc = unserialize($_COOKIE[$acc_list]);
+									$list_acc = $cookie_account;
 								?> 
-							<select name = "Receiver">
+							<select name = "receiver">
 								<?php foreach($list_acc as $key => $value) { ?>
 									<option value="<?php echo $key ?>"><?php echo $key ?></option>
 								<?php }?>
