@@ -19,7 +19,7 @@
                             <input type = "text" name = "first_name"/><br>
                                 <!--will output the error here-->
                                     <span class = "error"><?php echo $fname_err; echo"<br>";?></span>
-                        <label>Date of Birth (dd/mm/yyyy)</label><br>
+                        <label>Date of Birth (yyyy-mm-dd)</label><br>
                             <input type="text" name="dob"><br>
                                <!--will output the error here-->
                                     <span class = "error"><?php echo $dob_err; echo"<br>";?></span>

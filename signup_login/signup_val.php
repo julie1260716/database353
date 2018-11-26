@@ -1,7 +1,8 @@
 <?php
         //url variable
         $url = "../signup_login/confirmation.php";
-
+        //db connection
+        include("../db_connection.php");
         //defining the variables and setting to empty values
         //errors
         $fname_err = $lname_err = $dob_err = $phone_err = $email_err = $add_err = $pass_err= "";
@@ -25,8 +26,8 @@
           else $allClear++; $lname = test_input($_POST['last_name']); 
          //DOB
           if(empty($_POST['dob'])) $dob_err = "* Cannot leave field blank";
-          //valid dob
-          else if (!preg_match("/([012]?[1-9]|[12]0|3[01])\/(0?[1-9]|1[012])\/([0-9]{4})/",$_POST['dob'])) $dob_err = "Date of Birth is invalid (e.g. 12/01/1990)";
+          //valid dob[012]?
+          else if (!preg_match("/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/",$_POST['dob'])) $dob_err = "Date of Birth is invalid (e.g. 1990-01-12)";
           else $allClear++;   $dob = test_input($_POST['dob']); 
           //Phone
           if(empty($_POST['phone'])) $phone_err = "* Cannot leave field blank";
@@ -48,6 +49,8 @@
           
             if($allClear == $numFields)
             {
+                /******INSERT INTO THE DATABASE******/
+                insertClient($db);
                 /******START SESSION + STORE VARIABLES******/
                 doCookies();
                 /******REDIRECT TO CONFIRMATION PAGE******/
@@ -64,6 +67,26 @@ function test_input($data) {
    
             return $data;
        }
+
+function insertClient($db) {
+    $maxId = getMaxId($db);
+    
+    $query = "insert into CLIENT (client_id, client_email, client_password, client_first_name, client_last_name, client_birthday, client_joining_date, client_address, client_phone, client_branch_id) values (3, 'email', 'pass', 'Julie', 'Merlin', '1990-12-14', '2018-11-26', '123 West', '514-343-2353',2)"; 
+     mysqli_query($db, $query) or die("Error with query");
+    
+    
+}
+
+function getMaxId($db){
+    $query = "SELECT MAX(client_id) FROM client";
+    mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_array($result);
+    echo $row['MAX(client_id)'];
+    
+    return $row['MAX(client_id)'];
+}
 
 function doCookies() {
     //set variables for the cookies (set for 24 hours)
