@@ -5,8 +5,6 @@
 	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
 	else {
-		$cookie_name = "user";
-		$cookie_value = "John Doe";
 		$cookie_account = array(
 			40023289 => 5000,
 			50023289 => 500,
@@ -22,7 +20,6 @@
 		$acc_rec_list = "acc_rec_list";
 		$rec_list = serialize($cookie_receive);
 
-		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
 		setcookie($acc_rec_list, $rec_list, time() + (86400 * 30), "/"); // 86400 = 1 day
 	}

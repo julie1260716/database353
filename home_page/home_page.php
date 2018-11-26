@@ -18,15 +18,13 @@
 	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
 	else {
-		$cookie_name = "user";
-		$cookie_value = "John Doe";
 		$cookie_account = array(
 			40023289 => 5000,
 			50023289 => 500,
 			997789 => 1000);
 
 		$id = 123456789;
-		$fname = $cookie_value;
+		$fname = "John";
 
 		$acc_list = "accounts";
 		$cookie_acc = serialize($cookie_account);
@@ -42,25 +40,11 @@
 			"Rent" => 700);
 		$bill_list = "bills";
 		$cookie_bills = serialize($bills);
-
-		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+		
 		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
 		setcookie($bill_list, $cookie_bills, time() + (86400 *30), "/");
 		setcookie($acc_rec_list, $rec_list, time() + (86400 * 30), "/"); // 86400 = 1 day
 	}
-
-	$servername = "127.0.0.1";
-	$username = "root";
-	$password = "";
-
-	// Create connection
-	$conn = new mysqli($servername, $username, $password);
-
-	// Check connection
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
-	echo "Connected successfully";
 
 ?>
 <!DOCTYPE html>
