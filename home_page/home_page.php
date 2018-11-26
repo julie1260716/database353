@@ -1,3 +1,9 @@
+<?php
+	if(isset($_COOKIE["cli_fname"]))
+    	$cli_fname = $_COOKIE["cli_fname"];
+	
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,11 +20,11 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form>
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello </p>
+					<p class="subtitle">Hello <?php echo $cli_fname; ?></p>
 					    <ul> 
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
 						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
@@ -30,21 +36,22 @@
 		            <br>
 					<br>
 
-					<table class="display_account"> Account
-						<tr class="account_info">
-							<td id="account_number">40023289</td>
-							<td id="account_balance">CDN 9999</td>
-						</tr>
-
-						<tr>
-						</tr>
+					<label>Account</label>
+					<table class="display_account"> 
+						<?php foreach ($cookie_account as $key => $value) { ?>
+					        <tr>
+					           <td><?php echo $key ?></td>
+					           <td><?php echo $value ?></td>
+					        </tr>
 					</table>
 
-					<table class="credit_card_line">Credit Card
-						<tr class="credit_info">
-							<td id="credit_number">5004789</td>
-							<td id="credit_balance">-150</td>
-						</tr>
+					<label>Credit card</label>
+					<table class="credit_card_line">
+						<?php foreach ($cookie_account as $key => $value) { ?>
+					        <tr>
+					           <td><?php echo $key ?></td>
+					           <td><?php echo $value ?></td>
+					        </tr>
 					</table>
 
 					<br>

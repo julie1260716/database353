@@ -28,7 +28,7 @@
           <a href="../home_page/home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>        <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form action="pay_bills_action.php" method="post">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -42,11 +42,13 @@
 					<br>
 					<label> Account </label>
 					<?php
-							$list_acc = unserialize($_COOKIE[$acc_list]);
+							$list_acc = $cookie_account;
 					?> 
-					<select>
+
+					
+					<select name = "sender">
 						<?php foreach($list_acc as $key => $value) { ?>
-							<option value="<?php echo $key ?>"><?php echo $value ?></option>
+							<option value="<?php echo $key ?>"><?php echo $key ?></option>
 						<?php }?>
 					</select>
 
@@ -57,13 +59,15 @@
 							$list_bill = unserialize($_COOKIE[$bill_list]);
 					?>
 
-					<select> 
+					<select name = "pay_bill"> 
 						<?php foreach($list_bill as $key => $value) { ?>
-							<option value="<?php echo $key ?>"><?php echo $value ?></option>
+							<option value="<?php echo $key ?>"><?php echo $key; echo " bills: ",$value; ?></option>
 						<?php }?>
 					</select>
 
-					<br>
+					</div>
+					<button type="submit" style="font-size: 16px">Confirm</button>
+					<br><br>
 					<button type="submit" style="font-size: 16px">Apply for new credit</button>
 					<button type="submit" style="font-size: 16px" formaction="">Open new account</button>
 				</div>

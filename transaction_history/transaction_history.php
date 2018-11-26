@@ -14,7 +14,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="../signup/signup.php">
+        <form class="add_customer_form" action="transaction_action.php" method="post">
 
 			<div class="flex-container">   
 				<div class = "account">   
