@@ -10,7 +10,7 @@
     </head>
     <body>
       <div id="container">
-        <h1>BANKS.</h1>
+        <h1>BANK.</h1>
         <h2>Sign in to Online Banking</h2>
     <div class="flex-container">      
         <div>    

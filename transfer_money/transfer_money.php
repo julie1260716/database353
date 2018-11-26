@@ -2,19 +2,16 @@
 	if(count($_COOKIE) > 0) {
 	    setcookie("user", "", time() - 3600);
 	    setcookie("accounts", "", time() - 3600);
-	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
-	else {
-		$cookie_account = array(
-			40023289 => 5000,
-			50023289 => 500,
-			997789 => 1000);
-
-		$acc_list = "accounts";
-		$cookie_acc = serialize($cookie_account);
-
-		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
-	}
+	$cookie_name = "user";
+	$cookie_value = "John Doe";
+	$cookie_account = array(
+		40023289 => 5000,
+		50023289 => 500,
+		997789 => 1000);
+	$acc_list = "accounts";
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	setcookie($acc_list, serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +20,9 @@
         <meta charset="utf-8">
         <title>Transfer money</title>
         <meta name="description" content="Comp 353 Project">
-        <link rel="stylesheet" href="main_stylesheet.css"> 
+        <link rel="stylesheet" href="main_stylesheet.css">
+         <!-- php transfer money file -->
+        <?php include("transfer_action.php");?>  
     </head>
     <body>
       <div id="container">
@@ -32,7 +31,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form class="add_customer_form" action="transfer_action.php" method="post">
+        <form class="add_customer_form" action="transfer_action.php?cookie_name=<?php echo $cookie_name ?>" method="post">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -49,9 +48,9 @@
 					<!--Load all account of users -->
 					<label> From account </label>
 					<?php
-							$list_acc = $cookie_account ;
+							$list_acc = unserialize($_COOKIE[$acc_list]);
 					?> 
-					<select name = "sender">
+					<select>
 						<?php foreach($list_acc as $key => $value) { ?>
 							<option value="<?php echo $key ?>"><?php echo $key ?></option>
 						<?php }?>
@@ -68,9 +67,9 @@
 			            <div class=container>	          
 			                <label>To Account No</label>
 				                <?php
-									$list_acc = $cookie_account;
+									$list_acc = unserialize($_COOKIE[$acc_list]);
 								?> 
-							<select name = "receiver">
+							<select>
 								<?php foreach($list_acc as $key => $value) { ?>
 									<option value="<?php echo $key ?>"><?php echo $key ?></option>
 								<?php }?>

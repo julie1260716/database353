@@ -2,26 +2,16 @@
 	if(count($_COOKIE) > 0) {
 	    setcookie("user", "", time() - 3600);
 	    setcookie("accounts", "", time() - 3600);
-	    $cookie_account = unserialize($_COOKIE['accounts']);
 	}
-	else {
-		$cookie_account = array(
-			40023289 => 5000,
-			50023289 => 500,
-			997789 => 1000);
-
-		$acc_list = "accounts";
-		$cookie_acc = serialize($cookie_account);
-
-		$bills = array(
-			"Electricity" => 300, 
-			"Rent" => 700);
-		$bill_list = "bills";
-		$cookie_bills = serialize($bills);
-		
-		setcookie($acc_list, $cookie_acc, time() + (86400 * 30), "/"); // 86400 = 1 day
-		setcookie($bill_list, $cookie_bills, time() + (86400 *30), "/");
-	}
+	$cookie_name = "user";
+	$cookie_value = "John Doe";
+	$cookie_account = array(40023289,50023289,997789);
+	$acc_list = "accounts";
+	$bills = array("Electricity", "Rent");
+	$bill_list = "bills";
+	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	setcookie($acc_list, serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
+	setcookie($bill_list, serialize($bills), time() + (86400 *30), "/");
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +28,7 @@
           <a href="../home_page/home_page.php"><button type="submit" style="font-size: 16px; float:right;">Homepage</button></a>        <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form action="pay_bills_action.php" method="post">
+        <form action="../signup/signup.php">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -52,11 +42,11 @@
 					<br>
 					<label> Account </label>
 					<?php
-							$list_acc = $cookie_account;
+							$list_acc = unserialize($_COOKIE[$acc_list]);
 					?> 
-					<select name = "sender">
+					<select>
 						<?php foreach($list_acc as $key => $value) { ?>
-							<option value="<?php echo $key ?>"><?php echo $key ?></option>
+							<option value="<?php echo $key ?>"><?php echo $value ?></option>
 						<?php }?>
 					</select>
 
@@ -64,22 +54,19 @@
 
 					<label> Bills </label>
 					<?php
-							$list_bill = unserialize($_COOKIE['bills']);
+							$list_bill = unserialize($_COOKIE[$bill_list]);
 					?>
 
-					<select name = "pay_bill"> 
+					<select> 
 						<?php foreach($list_bill as $key => $value) { ?>
-							<option value="<?php echo $key ?>"><?php echo $key; echo " bills: ",$value; ?></option>
+							<option value="<?php echo $key ?>"><?php echo $value ?></option>
 						<?php }?>
 					</select>
+
+					<br>
+					<button type="submit" style="font-size: 16px">Apply for new credit</button>
+					<button type="submit" style="font-size: 16px" formaction="">Open new account</button>
 				</div>
-
-				<button type="submit" style="font-size: 16px">Confirm</button>
-				<br><br>
-
-				<button type="submit" style="font-size: 16px">Apply for new credit</button>
-				<button type="submit" style="font-size: 16px" formaction="">Open new account</button>
-
 		   </div><!--end of flex-container-->
     </form> 
        

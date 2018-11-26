@@ -1,5 +1,6 @@
 <?php
-        $url = "confirmation.php"
+        //url variable
+        $url = "../signup_login/confirmation.php";
 
         //defining the variables and setting to empty values
         //errors
