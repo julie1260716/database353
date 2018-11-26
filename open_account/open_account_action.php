@@ -2,6 +2,10 @@
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$account_type_id = $_POST['new_acc_type_id'];
 	}
+
+	//OPEN A NEW ACCOUT IN DB TABLE
+	// $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+    // VALUES ('John', 'Doe', 'john@example.com')";
 ?>
 
 <!DOCTYPE html>
