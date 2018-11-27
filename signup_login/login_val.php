@@ -4,7 +4,7 @@
     $url = "../home_page/home_page.php";
     //defining the variables and setting to empty values
     //errors
-    $cli_num_err = $cli_pass_err = $em_id_err = $em_pass_err =  $login_err= "";
+    $cli_num_err = $cli_pass_err = $em_id_err = $em_pass_err = "";
     //variables
     $cli_num = $cli_pass = $em_id = $em_pass = "";
 
@@ -25,13 +25,10 @@
         $cli_num = $_POST['cli_num'];
         $isFound = findClient($db, $cli_num);
         
-        if($isFound){
+        if($isFound == true){
             /******REDIRECT TO CONFIRMATION PAGE******/
-            //header("Location: $url");
-           // exit;
-        }
-        else{
-            $login_err = "* Error, Client was not found!";
+            header("Location: $url");
+            exit;
         }
              
     }//end of client if form
@@ -50,28 +47,6 @@
       }
     }//end of employee if form
 
-
-    //TAKE LAST ID OF TRANSACTION TABLE
-    // $conn = new mysqli($servername, $username, $password, $dbname);
-    // // Check connection
-    // if ($conn->connect_error) {
-    //     die("Connection failed: " . $conn->connect_error);
-    // }
-
-    // $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-    // VALUES ('John', 'Doe', 'john@example.com')";
-
-    // if ($conn->query($sql) === TRUE) {
-    //     $last_id = $conn->insert_id;
-    //     echo "New record created successfully. Last inserted ID is: " . $last_id;
-    // } else {
-    //     echo "Error: " . $sql . "<br>" . $conn->error;
-    // }
-
-    // $conn->close();
-
-    //STORE IN COOKIE
-
 function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -88,41 +63,45 @@ function findClient($db,$id){
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_array($result);
 
-    if($row==null)
+    if($row==null){
         echo"* Error, Client was not found!";
+        return false;
+    }
+        
      
     else {   
-        // echo $row['client_id'];
-        // echo $row['client_email'];
-        // echo $row['client_password'];
-        // echo $row['client_first_name'];
-        // echo $row['client_last_name'];
-        // echo $row['client_birthday'];
-        // echo $row['client_joining_date'];
-        // echo $row['client_address'];
-        // echo $row['client_phone'];
-        // echo $row['client_branch_id'];
+       /* echo $row['client_id'];
+        echo $row['client_email'];
+        echo $row['client_password'];
+        echo $row['client_first_name'];
+        echo $row['client_last_name'];
+        echo $row['client_birthday'];
+        echo $row['client_joining_date'];
+        echo $row['client_address'];
+        echo $row['client_phone'];
+        echo $row['client_branch_id'];*/
         doCookies($row);
          //CLOSE CONNECTION
          mysqli_close($db);
          //if the client is FOUND, return TRUE
-        // return true;
+         return true;
          }
         
     } //end of findClient()
 
 
 function doCookies($row){
-    setcookie("cli_id", $row['client_id'], time() + (86400 * 1), "/");
-    // setcookie("cli_email", $row['client_email'], time() + (86400 * 1), "/");
-    // setcookie("cli_pass", $row['client_password'], time() + (86400 * 1), "/");
-    setcookie("cli_fname", $row['client_first_name'], time() + (86400 * 1), "/");
-    // setcookie("cli_lname", $row['client_last_name'], time() + (86400 * 1), "/");
-    // setcookie("cli_bday", $row['client_birthday'], time() + (86400 * 1), "/");
-    // setcookie("cli_join_date", $row['client_joining_date'], time() + (86400 * 1), "/");
-    // setcookie("cli_add", $row['client_address'], time() + (86400 * 1), "/");
-    // setcookie("cli_phone", $row['client_phone'], time() + (86400 * 1), "/");
-    // setcookie("cli_branch_id", $row['client_branch_id'], time() + (86400 * 1), "/");
+    setcookie("cli_id", $row['client_id'], time() + (86400 * 1), '/');
+    setcookie("cli_fname", $row['client_first_name'], time() + (86400 * 1), '/');
+   /* setcookie("cli_email", $row['client_email'], time() + (86400 * 1), "/");
+    setcookie("cli_pass", $row['client_password'], time() + (86400 * 1), "/");
+   
+    setcookie("cli_lname", $row['client_last_name'], time() + (86400 * 1), "/");
+    setcookie("cli_bday", $row['client_birthday'], time() + (86400 * 1), "/");
+    setcookie("cli_join_date", $row['client_joining_date'], time() + (86400 * 1), "/");
+    setcookie("cli_add", $row['client_address'], time() + (86400 * 1), "/");
+    setcookie("cli_phone", $row['client_phone'], time() + (86400 * 1), "/");
+    setcookie("cli_branch_id", $row['client_branch_id'], time() + (86400 * 1), "/");*/
 }//end of doCookies()
 
 ?> 
