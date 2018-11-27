@@ -37,12 +37,10 @@
     mysqli_query($db, $query) or die("Error with query");
     //Get Result set
     $result = mysqli_query($db, $query);
-    while ($row = mysqli_fetch_array($result)) {
-    	foreach ($row as $key => $value)
-    		$transaction_history[$key] = $value;
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    	$transaction_history[] = $row;
     }
 
-    print_r($transaction_history);
    mysqli_close($db);
 ?>
 
@@ -82,12 +80,12 @@
 				           <td>Receiver</td>
 				           <td>Amount</td>
 				        </tr>
-						<?php for ($x = 0; $x < sizeof($transaction_history); $x = $x + 4) { ?>
+						<?php foreach ($transaction_history as $key => $value) { ?>
 						        <tr>
-						           <td><?php echo $transaction_history['transaction_id'] ?></td>
-						           <td><?php echo $transaction_history['transaction_from_account'] ?></td>
-						           <td><?php echo $transaction_history['transaction_to_payee'] ?></td>
-						           <td><?php echo $transaction_history['transaction_amount'] ?></td>
+						           <td><?php echo $value['transaction_id'] ?></td>
+						           <td><?php echo $value['transaction_from_account'] ?></td>
+						           <td><?php echo $value['transaction_to_payee'] ?></td>
+						           <td><?php echo $value['transaction_amount'] ?></td>
 						           	
 						           </td>
 						        </tr>
@@ -97,8 +95,8 @@
 					</table>
 
 					<br>
-					<button type="submit" style="font-size: 16px">Apply for new credit</button>
-					<button type="submit" style="font-size: 16px" formaction="">Open new account</button>
+					<button type="submit" style="font-size: 16px" formaction="../apply_credit/apply_credit.php">Apply for new credit</button>
+					<button type="submit" style="font-size: 16px" formaction="../open_account/open_account.php">Open new account</button>
 				</div>
 		   </div><!--end of flex-container-->
     </form> 

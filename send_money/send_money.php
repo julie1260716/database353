@@ -92,6 +92,10 @@
 
 			        <button type="submit" style="font-size: 16px">Confirm</button>
 				</div>
+
+				<br>
+				<button type="submit" style="font-size: 16px" formaction="../apply_credit/apply_credit.php">Apply for new credit</button>
+				<button type="submit" style="font-size: 16px" formaction="../open_account/open_account.php">Open new account</button>
 		   </div><!--end of flex-container-->
     </form> 
        

@@ -38,57 +38,75 @@
 						<tr>
 							<td>01</td>
 							<td>Personal</td>
-							<td>Investment</td>
-							<td>100</td>
+							<td>Checking</td>
+							<td>20</td>
 						</tr>
 
 						<tr>
 							<td>02</td>
-							<td>Personal</td>
-							<td>Banking</td>
-							<td>100</td>
+							<td>Business</td>
+							<td>Checking</td>
+							<td>50</td>
 						</tr>
 						<tr>
 							<td>03</td>
-							<td>Personal</td>
-							<td>Saving</td>
+							<td>Cooperate</td>
+							<td>Checking</td>
 							<td>100</td>
 						</tr>
 						<tr>
 							<td>04</td>
-							<td>Business</td>
-							<td>Investment</td>
-							<td>1000</td>
+							<td>Personal</td>
+							<td>Saving</td>
+							<td>20</td>
 						</tr>
 						<tr>
 							<td>05</td>
 							<td>Business</td>
-							<td>Banking</td>
-							<td>1000</td>
+							<td>Saving</td>
+							<td>50</td>
 						</tr>
 						<tr>
 							<td>06</td>
-							<td>Business</td>
+							<td>Cooperate</td>
 							<td>Saving</td>
-							<td>1000</td>
+							<td>100</td>
 						</tr>
 						<tr>
 							<td>07</td>
-							<td>Cooperate</td>
-							<td>Investment</td>
-							<td>10000</td>
+							<td>Personal</td>
+							<td>Insurance</td>
+							<td>20</td>
 						</tr>
 						<tr>
 							<td>08</td>
-							<td>Cooperate</td>
-							<td>Banking</td>
-							<td>10000</td>
+							<td>Business</td>
+							<td>Insurance</td>
+							<td>50</td>
 						</tr>
 						<tr>
 							<td>09</td>
 							<td>Cooperate</td>
-							<td>Saving</td>
-							<td>10000</td>
+							<td>Insurance</td>
+							<td>100</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>Personal</td>
+							<td>Investment</td>
+							<td>20</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>Business</td>
+							<td>Investment</td>
+							<td>50</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>Cooperate</td>
+							<td>Investment</td>
+							<td>100</td>
 						</tr>
 						
 					</table>

@@ -14,7 +14,7 @@
 
     $account = array ();
 
-    $query = "INSERT INTO account VALUES ('$new_acc_number', 0 , '$account_type_id', '$cli_id')";
+    $query = "INSERT INTO credit_card VALUES ('$new_acc_number', 0 , '$account_type_id', '$cli_id')";
     mysqli_query($db, $query) or die("Error with query");
 ?>
 
@@ -23,7 +23,7 @@
     
     <head>
         <meta charset="utf-8">
-        <title>Open account</title>
+        <title>Apply credit</title>
         <meta name="description" content="Comp 353 Project">
         <link rel="stylesheet" href="main_stylesheet.css">
     </head>
@@ -53,19 +53,17 @@
 
 					<table>
 						<tr>
-							<td>ID</td>
 							<td>Type</td>
-							<td>Service</td>
-							<td>Annual Fee</td>
+							<td>Limit</td>
+							<td>Interst rate</td>
 						</tr>
 
 						<?php
 							if ($account_type_id == 1) { ?>
 								<tr>
 									<td>01</td>
-									<td>Personal</td>
-									<td>Checking</td>
-									<td>20</td>
+									<td>5000</td>
+									<td>10 %</td>
 								</tr>
 
 							<?php } ?>
@@ -74,9 +72,8 @@
 							if ($account_type_id == 2) { ?>
 								<tr>
 									<td>02</td>
-									<td>Business</td>
-									<td>Checking</td>
-									<td>50</td>
+									<td>25000</td>
+									<td>15 %</td>
 								</tr>
 
 							<?php } ?>
@@ -85,108 +82,8 @@
 							if ($account_type_id == 3) { ?>
 								<tr>
 									<td>03</td>
-									<td>Cooperate</td>
-									<td>Checking</td>
-									<td>100</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 4) { ?>
-								<tr>
-									<td>04</td>
-									<td>Personal</td>
-									<td>Saving</td>
-									<td>20</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 5) { ?>
-								<tr>
-									<td>05</td>
-									<td>Business</td>
-									<td>Saving</td>
-									<td>50</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 6) { ?>
-								<tr>
-									<td>06</td>
-									<td>Cooperate</td>
-									<td>Saving</td>
-									<td>100</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 7) { ?>
-								<tr>
-									<td>07</td>
-									<td>Personal</td>
-									<td>Insurance</td>
-									<td>20</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 8) { ?>
-								<tr>
-									<td>08</td>
-									<td>Business</td>
-									<td>Insurance</td>
-									<td>50</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 9) { ?>
-								<tr>
-									<td>09</td>
-									<td>Cooperate</td>
-									<td>Insurance</td>
-									<td>100</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 10) { ?>
-								<tr>
-									<td>10</td>
-									<td>Personal</td>
-									<td>Investment</td>
-									<td>100</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 11) { ?>
-								<tr>
-									<td>11</td>
-									<td>Business</td>
-									<td>Investment</td>
-									<td>50</td>
-								</tr>
-
-							<?php } ?>
-
-						<?php
-							if ($account_type_id == 12) { ?>
-								<tr>
-									<td>12</td>
-									<td>Cooperate</td>
-									<td>Investment</td>
-									<td>100</td>
+									<td>100 000</td>
+									<td>20%</td>
 								</tr>
 
 							<?php } ?>
