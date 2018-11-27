@@ -1,3 +1,51 @@
+<?php
+	//connect to db
+    include("../db_connection.php");
+
+	if(isset($_COOKIE["cli_fname"]))
+    	$cli_fname = $_COOKIE["cli_fname"];
+    if(isset($_COOKIE["cli_id"]))
+    	$cli_id = $_COOKIE["cli_id"];
+
+    $account = array ();
+
+    $query = "SELECT * FROM account WHERE account_holder_id='$cli_id'";
+    mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_account = htmlspecialchars($row['account_number']);
+    	$account_balance = htmlspecialchars($row['account_balance']);
+
+    	$account[$cookie_account]= $account_balance;
+    }
+
+    $credit = array();
+    $query = "SELECT * FROM credit_card WHERE credit_card_account_id = '$cli_id'";
+	mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_credit = htmlspecialchars($row['credit_card_id']);
+    	$credit_card_balance = htmlspecialchars($row['credit_card_balance']);
+    	
+    	$credit[$cookie_credit] = $credit_card_balance;
+   }
+
+   	$transaction_history = array ();
+   	$query = "SELECT * FROM transaction_history WHERE transaction_from_account='$cli_id'";
+    mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	foreach ($row as $key => $value)
+    		$transaction_history[$key] = $value;
+    }
+
+    print_r($transaction_history);
+   mysqli_close($db);
+?>
+
 <!DOCTYPE html>
 <html>
     
@@ -14,7 +62,7 @@
         <h1>BANK.</h1>
         <h2>Welcome to Online Banking</h2>
 
-        <form class="add_customer_form" action="transaction_action.php" method="post">
+        <form class="add_customer_form">
 
 			<div class="flex-container">   
 				<div class = "account">   
@@ -26,24 +74,26 @@
 						   <li><a href="../pay_bills/pay_bills.php">Pay bills</a></li>
 						 </ul>
 					<br>
-					Account
-					<select>
-						<option value="40023289">40023289</option>
-						<option value="5004789">5004789</option>
-					</select>
-
-					<table class="display_history"> Account
-						<tr class="history_info">
-							<td id="date">DATE</td>
-							<td id="spent">PAID FOR</td>
-							<td id="amount">AMOUNT</td>
-						</tr>
-
-						<tr class="details">
-							<td id="date1">30/10/2018</td>
-							<td id="spent1">Starbucks</td>
-							<td id="amount1">5.9</td>
-						</tr>
+					
+					<table>
+						<tr>
+						   <td>Transaction ID</td>
+				           <td>Client ID</td>
+				           <td>Receiver</td>
+				           <td>Amount</td>
+				        </tr>
+						<?php for ($x = 0; $x < sizeof($transaction_history); $x = $x + 4) { ?>
+						        <tr>
+						           <td><?php echo $transaction_history['transaction_id'] ?></td>
+						           <td><?php echo $transaction_history['transaction_from_account'] ?></td>
+						           <td><?php echo $transaction_history['transaction_to_payee'] ?></td>
+						           <td><?php echo $transaction_history['transaction_amount'] ?></td>
+						           	
+						           </td>
+						        </tr>
+						<?php
+							}
+						?>
 					</table>
 
 					<br>

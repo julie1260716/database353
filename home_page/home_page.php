@@ -1,6 +1,38 @@
 <?php
+	//connect to db
+    include("../db_connection.php");
+
 	if(isset($_COOKIE["cli_fname"]))
     	$cli_fname = $_COOKIE["cli_fname"];
+    if(isset($_COOKIE["cli_id"]))
+    	$cli_id = $_COOKIE["cli_id"];
+
+    $account = array ();
+
+    $query = "SELECT * FROM account WHERE account_holder_id='$cli_id'";
+    mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_account = htmlspecialchars($row['account_number']);
+    	$account_balance = htmlspecialchars($row['account_balance']);
+
+    	$account[$cookie_account]= $account_balance;
+    }
+
+    $credit = array();
+    $query = "SELECT * FROM credit_card WHERE credit_card_account_id = '$cli_id'";
+	mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_credit = htmlspecialchars($row['credit_card_id']);
+    	$credit_card_balance = htmlspecialchars($row['credit_card_balance']);
+    	
+    	$credit[$cookie_credit] = $credit_card_balance;
+   }
+
+   mysqli_close($db);
 	
 ?>
 
@@ -32,26 +64,36 @@
 						   <li><a href="../transaction_history/transaction_history.php">Transaction history</a></li>
 						 </ul>
 
-					<br> 
-		            <br>
 					<br>
 
 					<label>Account</label>
 					<table class="display_account"> 
-						<?php foreach ($cookie_account as $key => $value) { ?>
+						<tr>
+							<td>Account number</td>
+							<td>Balance</td>
+						</tr>
+
+						<?php foreach ($account as $key => $value) { ?>
 					        <tr>
-					           <td><?php echo $key ?></td>
+					           <td><?php echo $key; ?></td>
 					           <td><?php echo $value ?></td>
 					        </tr>
+					    <?php } ?>
 					</table>
 
 					<label>Credit card</label>
 					<table class="credit_card_line">
-						<?php foreach ($cookie_account as $key => $value) { ?>
+						<tr>
+							<td>Account number</td>
+							<td>Balance</td>
+						</tr>
+						
+						<?php foreach ($credit as $key => $value) { ?>
 					        <tr>
 					           <td><?php echo $key ?></td>
 					           <td><?php echo $value ?></td>
 					        </tr>
+					    <?php } ?>
 					</table>
 
 					<br>

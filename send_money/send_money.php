@@ -1,14 +1,38 @@
 <?php
-	if(count($_COOKIE) > 0) {
-	    setcookie("user", "", time() - 3600);
-	    setcookie("accounts", "", time() - 3600);
-	}
-	$cookie_name = "user";
-	$cookie_value = "John Doe";
-	$cookie_account = array(40023289,50023289,997789);
-	$acc_list = "accounts";
-	setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-	setcookie($acc_list, serialize($cookie_account), time() + (86400 * 30), "/"); // 86400 = 1 day
+	//connect to db
+    include("../db_connection.php");
+
+	if(isset($_COOKIE["cli_fname"]))
+    	$cli_fname = $_COOKIE["cli_fname"];
+    if(isset($_COOKIE["cli_id"]))
+    	$cli_id = $_COOKIE["cli_id"];
+
+    $account = array ();
+
+    $query = "SELECT * FROM account WHERE account_holder_id='$cli_id'";
+    mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_account = htmlspecialchars($row['account_number']);
+    	$account_balance = htmlspecialchars($row['account_balance']);
+
+    	$account[$cookie_account]= $account_balance;
+    }
+
+    $credit = array();
+    $query = "SELECT * FROM credit_card WHERE credit_card_account_id = '$cli_id'";
+	mysqli_query($db, $query) or die("Error with query");
+    //Get Result set
+    $result = mysqli_query($db, $query);
+    while ($row = mysqli_fetch_array($result)) {
+    	$cookie_credit = htmlspecialchars($row['credit_card_id']);
+    	$credit_card_balance = htmlspecialchars($row['credit_card_balance']);
+    	
+    	$credit[$cookie_credit] = $credit_card_balance;
+   }
+
+   mysqli_close($db);
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,12 +65,12 @@
 
 					<label> Account </label>
 					<?php
-							$list_acc = $cookie_account;
+							$list_acc = $account + $credit;
 					?> 
 
 					<select name = "sender">
 						<?php foreach($list_acc as $key => $value) { ?>
-							<option value="<?php echo $key ?>"><?php echo $key ?></option>
+							<option value="<?php echo $key ?>"><?php echo $key; echo ": ",$value; ?></option>
 						<?php }?>
 					</select>
 					<br>
