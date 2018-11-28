@@ -51,8 +51,6 @@
             {
                 /******INSERT INTO THE DATABASE******/
                 insertClient($db);
-                /******START SESSION + STORE VARIABLES******/
-                doCookies();
                 /******REDIRECT TO CONFIRMATION PAGE******/
                 header("Location: $url");
                 exit;
@@ -69,12 +67,32 @@ function test_input($data) {
        }
 
 function insertClient($db) {
-    $maxId = getMaxId($db);
+    $maxId = getMaxId($db) + 1;
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $bday = $_POST['dob'];
+    $join = date("Y-m-d");
+    $add = $_POST['address'];
+    $phone = $_POST['phone'];
     
-    $query = "insert into CLIENT (client_id, client_email, client_password, client_first_name, client_last_name, client_birthday, client_joining_date, client_address, client_phone, client_branch_id) values (3, 'email', 'pass', 'Julie', 'Merlin', '1990-12-14', '2018-11-26', '123 West', '514-343-2353',2)"; 
+    
+    $query = "insert into CLIENT (client_id, client_email, client_password, client_first_name, client_last_name, client_birthday, client_joining_date, client_address, client_phone, client_branch_id) values ($maxId, '$email', '$pass', '$fname', '$lname', '$bday', '$join', '$add', '$phone',2)"; 
+    
      mysqli_query($db, $query) or die("Error with query");
     
+     //set variables for the cookies (set for 24 hours)
+    setcookie("cli_num", $maxId, time() + (86400 * 1), "/");
+    setcookie("cli_fname", $fname, time() + (86400 * 1), "/");
+    setcookie("cli_lname", $lname, time() + (86400 * 1), "/");
+    setcookie("cli_dob", $bday, time() + (86400 * 1), "/");
+    setcookie("cli_email", $email, time() + (86400 * 1), "/");
+    setcookie("cli_phone", $phone, time() + (86400 * 1), "/");
+    setcookie("cli_add", $add, time() + (86400 * 1), "/");
+    setcookie("cli_pass", $pass, time() + (86400 * 1), "/");
     
+   
 }
 
 function getMaxId($db){
@@ -88,26 +106,5 @@ function getMaxId($db){
     return $row['MAX(client_id)'];
 }
 
-function doCookies() {
-    //set variables for the cookies (set for 24 hours)
-    setcookie("cli_num", 123456789, time() + (86400 * 1), "/");
-    setcookie("cli_fname", $_POST['first_name'], time() + (86400 * 1), "/");
-    setcookie("cli_lname", $_POST['last_name'], time() + (86400 * 1), "/");
-    setcookie("cli_dob", $_POST['dob'], time() + (86400 * 1), "/");
-    setcookie("cli_email", $_POST['email'], time() + (86400 * 1), "/");
-    setcookie("cli_phone", $_POST['phone'], time() + (86400 * 1), "/");
-    setcookie("cli_add", $_POST['address'], time() + (86400 * 1), "/");
-    setcookie("cli_pass", $_POST['password'], time() + (86400 * 1), "/");
-    
-   /* //print the cookies
-    echo "Value is: " . $_COOKIE["cli_num"];
-    echo "Value is: " . $_COOKIE["cli_fname"];
-    echo "Value is: " . $_COOKIE["cli_lname"];
-    echo "Value is: " . $_COOKIE["cli_dob"];
-    echo "Value is: " . $_COOKIE["cli_email"];
-    echo "Value is: " . $_COOKIE["cli_phone"];
-    echo "Value is: " . $_COOKIE["cli_add"];*/
-    
-}
 
 ?>

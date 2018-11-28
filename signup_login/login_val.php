@@ -2,6 +2,7 @@
     //connect to db
     include("../db_connection.php");
     $url = "../home_page/home_page.php";
+    $em_url = "../employee_home_page/employee_home_page.php";
     //defining the variables and setting to empty values
     //errors
     $cli_num_err = $cli_pass_err = $em_id_err = $em_pass_err = "";
@@ -26,9 +27,9 @@
         $isFound = findClient($db, $cli_num);
         
         if($isFound == true){
-            /******REDIRECT TO CONFIRMATION PAGE******/
-            header("Location: $url");
-            exit;
+            /******REDIRECT TO HOME PAGE******/
+          header("Location: $url");
+          exit;
         }
              
     }//end of client if form
@@ -43,7 +44,18 @@
           else $em_id = test_input($_POST['em_id']);
           //Employee password
           if(empty($_POST['em_pass'])) $em_pass_err = "* Cannot leave field blank";
-           else $em_pass = test_input($_POST['em_pass']);    
+           else $em_pass = test_input($_POST['em_pass']);  
+          
+          
+           //FINDING EMPLOYEE IN DATABASE
+        $em_id = $_POST['em_id'];
+        $isFound = findEmployee($db, $em_id);
+        
+        if($isFound == true){
+            /******REDIRECT TO CONFIRMATION PAGE******/
+            header("Location: $em_url");
+            exit;
+        }
       }
     }//end of employee if form
 
@@ -56,30 +68,18 @@ function test_input($data) {
 
 function findClient($db,$id){
     //Create SQL Query
-    //$query = "SELECT * FROM client WHERE client_id='2'";
-    $query = "SELECT * FROM client WHERE client_id='$id'";
-    mysqli_query($db, $query) or die("Error with query");
+    //$query = "SELECT * FROM client WHERE client_id=2;";
+    $query = "SELECT * FROM client WHERE client_id=$id";
+    mysqli_query($db, $query) or die("Errossr with querysss");
     //Get Result set
     $result = mysqli_query($db, $query);
     $row = mysqli_fetch_array($result);
-
     if($row==null){
         echo"* Error, Client was not found!";
         return false;
-    }
-        
-     
+    } 
     else {   
-       /* echo $row['client_id'];
-        echo $row['client_email'];
-        echo $row['client_password'];
-        echo $row['client_first_name'];
-        echo $row['client_last_name'];
-        echo $row['client_birthday'];
-        echo $row['client_joining_date'];
-        echo $row['client_address'];
-        echo $row['client_phone'];
-        echo $row['client_branch_id'];*/
+      
         doCookies($row);
          //CLOSE CONNECTION
          mysqli_close($db);
@@ -89,9 +89,33 @@ function findClient($db,$id){
         
     } //end of findClient()
 
+function findEmployee($db, $em_id){
+    //Create SQL Query
+    $query = "select * from emloyee where employee_id=$em_id";
+    mysqli_query($db, $query) or die("Errorss with query");
+    //Get Result set
+    
+    $result = mysqli_query($db, $query);
+    $row = mysqli_fetch_array($result);
+
+    if($row==null){
+        echo"* Error, Employee was not found!";
+        return false;
+    }
+        
+     
+    else {   
+        doEmCookies($row);
+         //CLOSE CONNECTION
+         mysqli_close($db);
+         //if the client is FOUND, return TRUE
+         return true;
+         }
+        
+    } //end of findClient()
 
 function doCookies($row){
-    setcookie("cli_id", $row['client_id'], time() + (86400 * 1), '/');
+    setcookie("cli_id", $row['employee_id'], time() + (86400 * 1), '/');
     setcookie("cli_fname", $row['client_first_name'], time() + (86400 * 1), '/');
    /* setcookie("cli_email", $row['client_email'], time() + (86400 * 1), "/");
     setcookie("cli_pass", $row['client_password'], time() + (86400 * 1), "/");
@@ -103,5 +127,9 @@ function doCookies($row){
     setcookie("cli_phone", $row['client_phone'], time() + (86400 * 1), "/");
     setcookie("cli_branch_id", $row['client_branch_id'], time() + (86400 * 1), "/");*/
 }//end of doCookies()
+
+function doEmCookies($row){
+    setcookie("em_id", $row['client_id'], time() + (86400 * 1), '/');
+}//end of doEmCookies()
 
 ?> 
