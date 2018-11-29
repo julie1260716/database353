@@ -5,6 +5,11 @@
     <div class="menu_section">
         <h3>Management</h3>
         <ul class="nav side-menu">
+            <li><a><i class="fa fa-group"></i> Banking <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="index.php">Bank Summary</a></li>
+                </ul>
+            </li>
             <li><a><i class="fa fa-group"></i> Employment <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="add_employee.php">Add Employee</a></li>

@@ -4,6 +4,8 @@ $username = "root";
 $password = "password";
 $conn = mysqli_connect($servername, $username, $password);
 $employee_count = "SELECT COUNT(employee_id) FROM EMPLOYEE";
+$creditcard_count = "SELECT COUNT(credit_card_id) FROM CREDIT_CARD";
+$jiaoyi_count = "SELECT COUNT(transaction_id) FROM TRANSACTION_HISTORY";
 $client_count = "SELECT count(client_id) FROM CLIENT";
 $branch_count = "SELECT count(branch_id) FROM BRANCH";
 $account_count = "SELECT count(account_number) FROM ACCOUNT";
@@ -12,6 +14,8 @@ $head_branch = "SELECT branch_city_id FROM BRANCH WHERE branch_is_head_office=1"
 mysqli_select_db($conn, '353s');
 $emcount = mysqli_fetch_array(mysqli_query($conn, $employee_count))[0];
 $clcount = mysqli_fetch_array(mysqli_query($conn, $client_count))[0];
+$credit_count = mysqli_fetch_array(mysqli_query($conn, $creditcard_count))[0];
+$jiaoyi_count = mysqli_fetch_array(mysqli_query($conn, $jiaoyi_count))[0];
 $brcount = mysqli_fetch_array(mysqli_query($conn, $branch_count))[0];
 $account = mysqli_fetch_array(mysqli_query($conn, $account_count))[0];
 $cicount = mysqli_fetch_array(mysqli_query($conn, $city_count))[0];
@@ -108,6 +112,22 @@ $conn->close();
                     <span class="count_top"><i class="fa fa-user"></i>Head Office Located At</span>
                     <div class="count green"><?php echo $cityName ?></div>
                 </div>
+
+            </div>
+
+            <div class="row tile_count">
+                <div class="col-md-4 col-sm-8 col-xs-12 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-user"></i> Total Credit Cards Accounts</span>
+                    <div class="count blue"><?php echo $credit_count ?></div>
+                </div>
+                <div class="col-md-4 col-sm-8 col-xs-12 tile_stats_count">
+                    <span class="count_top"><i class="fa fa-clock-o"></i>Total Transactions</span>
+                    <div class="count purple"><?php echo $jiaoyi_count ?></div>
+                </div>
+<!--                <div class="col-md-4 col-sm-8 col-xs-12 tile_stats_count">-->
+<!--                    <span class="count_top"><i class="fa fa-user"></i>Head Office Located At</span>-->
+<!--                    <div class="count green">--><?php //echo $cityName ?><!--</div>-->
+<!--                </div>-->
 
             </div>
             <!-- /top tiles -->
