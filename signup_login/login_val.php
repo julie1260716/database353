@@ -75,12 +75,15 @@ function findClient($db,$id){
         return false;
     } 
     else {   
-      
-        doCookies($row);
+		if(strcasecmp($row['client_password'],$_POST['cli_pass'])!=0)
+			 echo "* Error, the password is incorrect!";
+		 else{
+			 doCookies($row);
          //CLOSE CONNECTION
          mysqli_close($db);
-         //if the client is FOUND, return TRUE
          return true;
+		 }
+		 
          }
         
     } //end of findClient()
@@ -99,11 +102,18 @@ function findEmployee($db, $em_id){
         
      
     else {   
-        doEmCookies($row);
-         //CLOSE CONNECTION
+        
+		 //check the password
+		 if(strcasecmp($row['employee_password'],$_POST['em_pass'])!=0)
+			 echo "* Error, the password is incorrect!";
+		 else {
+			 doEmCookies($row);
+		 //CLOSE CONNECTION
          mysqli_close($db);
-         //if the client is FOUND, return TRUE
+		 //return true
          return true;
+		 }
+		 
          }
         
     } //end of findClient()
