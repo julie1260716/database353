@@ -16,11 +16,11 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed " . $conn->connect_error);
 }
-$sql = "DELETE FROM EMPLOYEE WHERE employee_id='$id'";
+$sql = "DELETE FROM BRANCH WHERE branch_id='$id'";
 $result = mysqli_query($conn, $sql);
 if ($conn->query($sql) === TRUE) {
     echo "The employee is deleted";
-    header("Location: all_employees.php");
+    header("Location: all_branches.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

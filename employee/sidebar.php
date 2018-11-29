@@ -13,10 +13,24 @@
                     <li><a href="remove_employee.php">Remove Employee</a></li>
                 </ul>
             </li>
-            <li><a><i class="fa fa-bank"></i>Client Management <span class="fa fa-chevron-down"></span></a>
+            <li><a><i class="fa fa-battery-full"></i>Client Management <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="all_clients.php">Show Clients</a></li>
                     <li><a href="remove_client.php">Remove Client</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-bank"></i>Branch Management <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="all_branches.php">Show Branch</a></li>
+                    <li><a href="add_branch.php">Add Branch</a></li>
+                    <li><a href="update_branch.php">Update Branch</a></li>
+                    <li><a href="remove_branch.php">Remove Branch</a></li>
+                </ul>
+            </li>
+            <li><a><i class="fa fa-beer"></i>City Management <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu">
+                    <li><a href="all_cites.php">City List</a></li>
+                    <li><a href="add_city.php">Add City</a></li>
                 </ul>
             </li>
         </ul>

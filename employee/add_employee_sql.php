@@ -5,7 +5,7 @@ session_status();
 $servername = "localhost";
 $username = "root";
 $password = "password";
-$dbname = "353p";
+$dbname = "353s";
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {

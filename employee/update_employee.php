@@ -4,7 +4,7 @@ $id = $_GET["id"];
 $servername = "localhost";
 $username = "root";
 $password = "password";
-$dbname = "353p";
+$dbname = "353s";
 $conn = new mysqli($servername, $username, $password, $dbname);
 $sql = "SELECT * FROM EMPLOYEE WHERE employee_id='$id'";
 $result = mysqli_query($conn, $sql);

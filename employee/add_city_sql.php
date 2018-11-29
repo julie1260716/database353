@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: DONGZHANG
- * Date: 2018-11-23
- * Time: 9:16 PM
- */
-$id = $_POST['id'];
-//$id = 1;
+
+session_status();
+
 $servername = "localhost";
 $username = "root";
 $password = "password";
@@ -16,11 +11,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed " . $conn->connect_error);
 }
-$sql = "DELETE FROM EMPLOYEE WHERE employee_id='$id'";
-$result = mysqli_query($conn, $sql);
+
+//$id = null;
+$name = ($_POST["name"]);
+//
+$sql = "INSERT INTO BRANCH_CITY (branch_city) VALUES('$name')";
 if ($conn->query($sql) === TRUE) {
-    echo "The employee is deleted";
-    header("Location: all_employees.php");
+    echo "New record added";
+    header("Location: all_cites.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
