@@ -3,6 +3,8 @@
 		$account_type_id = $_POST['new_acc_type_id'];
 	}
 
+	$msg = "Sucess!";
+
 	include("../db_connection.php");
 
 	if(isset($_COOKIE["cli_fname"]))
@@ -10,12 +12,17 @@
     if(isset($_COOKIE["cli_id"]))
     	$cli_id = $_COOKIE["cli_id"];
 
-    $new_acc_number = random_int(100000000, 999999999);
+    if ($account_type_id <=0 or $account_type_id > 3)
+    	$msg = "Fail";
 
-    $account = array ();
+    if ($msg == "Sucess!") {
+    	$new_acc_number = random_int(100000000, 999999999);
+	    
+	    $account = array ();
 
-    $query = "INSERT INTO credit_card VALUES ('$new_acc_number', 0 , '$account_type_id', '$cli_id')";
-    mysqli_query($db, $query) or die("Error with query");
+	    $query = "INSERT INTO credit_card VALUES ('$new_acc_number', 0 , '$account_type_id', '$cli_id')";
+	    mysqli_query($db, $query) or die("Error with query");
+	}
 ?>
 
 <!DOCTYPE html>
