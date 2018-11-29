@@ -10,7 +10,7 @@
     $account = array ();
 
     $query = "SELECT * FROM account WHERE account_holder_id='$cli_id'";
-    mysqli_query($db, $query) or die("Error with query");
+    mysqli_query($db, $query) or die("Errors with Query");
     //Get Result set
     $result = mysqli_query($db, $query);
     while ($row = mysqli_fetch_array($result)) {
@@ -20,7 +20,7 @@
     	$account[$cookie_account]= $account_balance;
     }
 
-    $credit = array();
+   $credit = array();
     $query = "SELECT * FROM credit_card WHERE credit_card_account_id = '$cli_id'";
 	mysqli_query($db, $query) or die("Error with query");
     //Get Result set
@@ -56,7 +56,7 @@
 
 			<div class="flex-container">   
 				<div class = "account">   
-					<p class="subtitle">Hello <?php echo $cli_fname; ?></p>
+					<p class="subtitle">Hello <?php echo $cli_fname; ?> here are your banking details</p>
 					    <ul> 
 						   <li><a href="../send_money/send_money.php">Send money</a></li>
 						   <li><a href="../transfer_money/transfer_money.php">Transfer money</a></li>
